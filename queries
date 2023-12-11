@@ -1,0 +1,50 @@
+CREATE TABLE users
+(
+  id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  lastname VARCHAR(100),
+  email VARCHAR(200),
+  password VARCHAR(200),
+  image VARCHAR(200),
+  token VARCHAR(200),
+  bio TEXT
+);
+
+CREATE TABLE books
+(
+  id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(100),
+  description TEXT,
+  image VARCHAR(200),
+  quant VARCHAR(150),
+<<<<<<< HEAD
+=======
+  category VARCHAR(50),
+>>>>>>> fe6f0081fb43ccb259ce2b3fb996da0270a55ab8
+  pages VARCHAR(50),
+);
+
+CREATE TABLE reviews (
+  id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  rating INT,
+  review TEXT,
+  users_id INT(11) UNSIGNED,
+  book_id INT(11) UNSIGNED,
+  FOREIGN KEY (users_id) REFERENCES users(id),
+  FOREIGN KEY (movies_id) REFERENCES movies(id)
+<<<<<<< HEAD
+);
+CREATE TABLE categories (
+  id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50)
+);
+
+CREATE TABLE books_categories (
+  id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  book_id INT(11) UNSIGNED,
+  category_id INT(11) UNSIGNED,
+  FOREIGN KEY (book_id) REFERENCES books(id),
+  FOREIGN KEY (category_id) REFERENCES categories(id)
+=======
+>>>>>>> fe6f0081fb43ccb259ce2b3fb996da0270a55ab8
+);

@@ -1,0 +1,344 @@
+/*===================================== Navbar =======================================*/
+.navbar-brand {
+  position: relative;
+}
+
+#logo {
+  width: 50px;
+}
+
+#bibliotech-title {
+  color: #fff;
+  position: absolute;
+  bottom: -2px;
+  font-size: 30px;
+  left: 55px;
+  font-weight: bold;
+}
+
+#main-navbar {
+  background-color: #121212;
+}
+
+#search-form {
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 5px;
+  width: 50%;
+  margin-left: 180px;
+}
+
+#search-form .form-control {
+  border: none;
+  width: 90%;
+  box-shadow: none;
+}
+
+#navbar {
+  min-width: 30%;
+}
+
+.navbar-nav {
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.navbar .nav-item .nav-link {
+  color: #fff;
+  transition: 0.5s;
+}
+
+.navbar .nav-item .nav-link:hover {
+  color: #999;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+/* ========================================= Footer ======================================*/
+#footer {
+  background-color: #000000;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+#social-container ul,
+#footer-links-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+#social-container li,
+#footer-links-container li {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+#social-container li {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  transition: 0.5s;
+  line-height: 3;
+}
+
+#social-container li:hover {
+  background-color: #333;
+}
+
+#social-container li a,
+#footer-links-container li a {
+  color: #fff;
+  transition: 0.5s;
+}
+
+#social-container li i {
+  font-size: 25px;
+}
+
+#footer-links-container {
+  margin: 30px 0;
+}
+/* ===================================== Autenticação ========================================================= */
+#auth-row {
+  justify-content: space-evenly;
+}
+
+#login-container h2,
+#register-container h2 {
+  text-align: center;
+  border-bottom: 2px solid #f5c518;
+  width: 200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#login-container form,
+#register-container form {
+  max-width: 400px;
+  margin: 30px auto;
+}
+/* ===== Alterações necessarias ===== */
+
+#login-container form div,
+#register-container form div,
+#edit-container div,
+#edit-container-password div,
+.new-movie-container .form-group,
+#review-form-id div,
+#edit-movie-form div {
+  margin-bottom: 15px;
+}
+.card-btn {
+  width: 100%;
+  color: #000;
+  background-color: #f5c518;
+  border: 2px solid #f5c518;
+}
+
+.card-btn:hover {
+  background-color: transparent;
+  color: #f5c518;
+  border: 2px solid #f5c518;
+}
+
+#profile-image-container,
+.profile-image-container {
+  width: 150px;
+  height: 150px;
+  border: 6px solid #f5c518;
+  border-radius: 100%;
+  background-size: cover;
+  background-position: center;
+  margin: 15px auto;
+}
+
+.profile-image-container {
+  width: 70px;
+  height: 70px;
+}
+
+.page-description {
+  color: #999;
+}
+
+#bio {
+  max-width: 400px;
+}
+
+.form-control.disabled {
+  background-color: #bbb;
+}
+
+#change-password-container {
+  margin-top: 30px;
+}
+/* ===== Alterações necessarias ===== */
+.edit-profile-page .card-btn,
+#add-movie-container .card-btn,
+#review-form .card-btn,
+#edit-book-form .card-btn {
+  width: auto;
+}
+/* ===================================== Home ========================================================= */
+
+#main-container {
+  background-color: #000000;
+  color: #fff;
+  min-height: 90vh;
+  padding: 40px;
+}
+.section-title {
+  font-size: 24px;
+  border-left: 4px solid #f5c518;
+  padding-left: 12px;
+  margin-top: 20px;
+}
+
+.section-description {
+  color: #ccc;
+  font-size: 18px;
+}
+
+/* ===================================== Painel Administrativo ========================================================= */
+
+#template-login {
+  padding-top: 10vh;
+}
+#add-book-container {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+#books-dashboard{
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.table-book-title {
+  color: #fff;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.table-book-title:hover {
+  color: #f5c518;
+}
+
+.actions-column {
+  max-width: 75px;
+  text-align: center;
+}
+
+.actions-column form {
+  display: inline-block;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0 5px;
+  font-weight: bold;
+  transition: 0.5s;
+  border: none;
+}
+
+.edit-btn {
+  text-decoration: none;
+  background-color: #0dcaf0;
+  color: #fff;
+}
+
+.edit-btn:hover {
+  background-color: transparent;
+  color: #0dcaf0;
+  text-decoration: none;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: transparent;
+  color: #dc3545;
+  text-decoration: none;
+}
+
+#add-book-container .card-btn {
+  width: auto;
+}
+/*======================New Book===============*/
+
+.new-book-container {
+  text-align: center;
+}
+
+#add-book-form {
+  text-align: left;
+}
+/*
+.book-image-container {
+  height: 400px;
+  min-width: 200px;
+  background-position: center;
+  background-size: cover;
+}*/
+.page-title {
+  text-align: center;
+}
+
+.page-title:after {
+  content: "";
+  width: 300px;
+  border-bottom: 2px solid #f5c518;
+  display: block;
+  margin: 0 auto;
+  padding-top: 7px;
+}
+/*========================== Edit Movie =============================== */
+
+#edit-book-form .form-group {
+  width: 70%;
+}
+.book-image-container {
+  height: 400px;
+  min-width: 200px;
+  background-position: center;
+  background-size: cover;
+}
+#image-edit .book-image-container {
+  margin-top: 40%;
+  border: 6px solid #f5c518;
+  border-radius: 3px;
+}
+/*======================Message===============*/
+
+.msg-container {
+  background-color: #000;
+  padding: 15px;
+}
+
+.msg {
+  width: 60%;
+  margin: 0 auto;
+  padding: 10px;
+  border: solid 1px #000;
+  text-align: center;
+}
+
+.msg.error {
+  color: #842029;
+  background-color: #f8d7da;
+  border-color: #f5c2c7;
+}
+
+.msg.success {
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #badbcc;
+}
