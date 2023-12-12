@@ -26,13 +26,16 @@ interface BookDAOInterface
 {
     public function buildBook($data);
     public function getLatestBooks();
+    public function getAllBooks();
     public function getBooksByCategory($category);
     public function findById($id);
     public function findByTitle($title);
     public function findCategory();
     public function create(Book $book);
+    public function createCategory($categoryName);
     public function update(Book $book);
     public function destroy($id);
+    public function destroyCategory($id);
 }
 
 

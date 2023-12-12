@@ -56,7 +56,48 @@ class BookDAO implements BookDAOInterface
     }
     public function getBooksByCategory($category)
     {
+        $books = [];
 
+        // Consulta para obter os IDs dos livros associados à categoria
+        $stmt = $this->conn->prepare("SELECT bc.book_id FROM books_categories bc
+                                      INNER JOIN categories c ON bc.category_id = c.id
+                                      WHERE c.name = :category
+                                      ORDER BY bc.id DESC");
+
+        $stmt->bindParam(":category", $category);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $bookIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+            // Consulta para obter os detalhes dos livros usando os IDs obtidos
+            $inClause = implode(",", array_fill(0, count($bookIds), "?"));
+            $stmtBooks = $this->conn->prepare("SELECT * FROM books WHERE id IN ($inClause) ORDER BY id DESC");
+            $stmtBooks->execute($bookIds);
+
+            $booksArray = $stmtBooks->fetchAll();
+            foreach ($booksArray as $bookData) {
+                $books[] = $this->buildBook($bookData);
+            }
+        }
+
+        return $books;
+    }
+    public function getAllBooks()
+    {
+        $books = [];
+
+        // livros em ordem alfabética pelo título
+        $stmt = $this->conn->query("SELECT * FROM books ORDER BY title ASC");
+
+        if ($stmt->rowCount() > 0) {
+            $booksArray = $stmt->fetchAll();
+            foreach ($booksArray as $bookData) {
+                $books[] = $this->buildBook($bookData);
+            }
+        }
+
+        return $books;
     }
     public function findById($id)
     {
@@ -99,6 +140,7 @@ class BookDAO implements BookDAOInterface
 
     public function create(Book $book)
     {
+        // Insere o livro na tabela 'books'
         $stmt = $this->conn->prepare("INSERT INTO books (
             title, description, image, quant, pages
           ) VALUES (
@@ -109,16 +151,20 @@ class BookDAO implements BookDAOInterface
         $stmt->bindParam(":description", $book->description);
         $stmt->bindParam(":image", $book->image);
         $stmt->bindParam(":quant", $book->quant);
-
         $stmt->bindParam(":pages", $book->pages);
-
-
-
-        $stmt->bindParam(":category", $book->category);
-        $stmt->bindParam(":pages", $book->pages);
-
 
         $stmt->execute();
+
+        // Obtém o ID do livro recém-inserido
+        $bookId = $this->conn->lastInsertId();
+
+
+        $stmt2 = $this->conn->prepare("INSERT INTO books_categories (book_id, category_id) VALUES (:book_id, :category_id)");
+        $stmt2->bindParam(":book_id", $bookId);
+        $stmt2->bindParam(":category_id", $book->category);
+
+        $stmt2->execute();
+
 
         // Redireciona e apresenta mensagem de sucesso
         $this->message->setMessage("Livro adicionado!", "success", "controlPainel.php");
@@ -138,6 +184,27 @@ class BookDAO implements BookDAOInterface
 
 
         return $categories;
+    }
+    public function createCategory($categoryName)
+    {
+        $stmt = $this->conn->prepare("INSERT INTO categories (name) VALUES (:categoryName);");
+
+        $stmt->bindParam(":categoryName", $categoryName);
+
+        $stmt->execute();
+
+        $this->message->setMessage("Categoria adicionada!", "success", "controlPainel.php");
+
+    }
+    public function destroyCategory($id)
+    {
+        $stmt = $this->conn->prepare("DELETE FROM categories WHERE id = :id");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+
+
+        $this->message->setMessage("Categoria deletado com sucesso!", "success", "controlPainel.php");
+
     }
 
     public function update(Book $book)

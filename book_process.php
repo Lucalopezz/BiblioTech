@@ -130,7 +130,24 @@ if ($type == "create") {
     }
 
 
-} else {
+}else if ($type == "create_category") {
+    $name = filter_input(INPUT_POST, "name");
+
+    if (!empty($name)) {
+        $categoryName = $name;
+
+        $bookDAO->createCategory($categoryName);
+    }
+}else if ($type == "delete_category"){
+    $id = filter_input(INPUT_POST, "id");
+
+    if($id){
+        $bookDAO->destroyCategory($id);
+    }else {
+        $message->setMessage("Informações Inválidas", "error", "index.php");
+    }
+
+}else {
     $message->setMessage("Informações erradas!", "error", "index.php");
 
 }

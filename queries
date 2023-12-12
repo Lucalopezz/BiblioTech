@@ -17,10 +17,6 @@ CREATE TABLE books
   description TEXT,
   image VARCHAR(200),
   quant VARCHAR(150),
-<<<<<<< HEAD
-=======
-  category VARCHAR(50),
->>>>>>> fe6f0081fb43ccb259ce2b3fb996da0270a55ab8
   pages VARCHAR(50),
 );
 
@@ -32,7 +28,7 @@ CREATE TABLE reviews (
   book_id INT(11) UNSIGNED,
   FOREIGN KEY (users_id) REFERENCES users(id),
   FOREIGN KEY (movies_id) REFERENCES movies(id)
-<<<<<<< HEAD
+
 );
 CREATE TABLE categories (
   id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -45,6 +41,4 @@ CREATE TABLE books_categories (
   category_id INT(11) UNSIGNED,
   FOREIGN KEY (book_id) REFERENCES books(id),
   FOREIGN KEY (category_id) REFERENCES categories(id)
-=======
->>>>>>> fe6f0081fb43ccb259ce2b3fb996da0270a55ab8
 );

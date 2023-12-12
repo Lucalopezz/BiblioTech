@@ -21,6 +21,7 @@ $adm = new AdmUser();
 require_once("templates/headerAdm.php");
 
 $books = $bookDAO->getLatestBooks();
+$categories = $bookDAO->FindCategory();
 
 ?>
 
@@ -71,9 +72,66 @@ $books = $bookDAO->getLatestBooks();
                 <?php endforeach; ?>
             </tbody>
         </table>
-
-
     </div>
+    <br>
+    <br>
+    <h2 class="section-title mt-5 ">Adiministração de Categorias</h2>
+    <p class="section-desciption">
+        Adicione / Exclua
+    </p>
+    <div class="col-md-12 " id="books-dashboard">
+        <table class="table table-dark">
+            <thead> <!-- cabeçalho da tabela -->
+                <th scope="col">#</th>
+                <th scope="col">Categorias</th>
+                <th scope="col" class="actions-column">Ações</th>
+            </thead>
+            <tbody>
+                <?php foreach ($categories as $category): ?>
+                    <tr>
+                        <td scope="row">
+                            <?= $category['id'] ?>
+                        </td>
+                        <td>
+                            <?= $category['name'] ?>
+                        </td>
+
+                        <td class="actions-column">
+                
+                            <form action="<?= $BASE_URL ?>book_process.php" method="post">
+                                <input type="hidden" name="type" value="delete_category">
+                                <input type="hidden" name="id" value="<?= $category['id'] ?>">
+                                <button type="submit" class="delete-btn"><i class="fas fa-times"></i>Deletar</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <!--Adicionar Categoria -->
+    <div class="row">
+        <div class="col-md-9" id="add-book-container"></div>
+
+        <div class="col-md-3" id="add-book-container">
+
+            <form action="<?= $BASE_URL ?>book_process.php" method="post" id="add-category-form"
+                enctype="multipart/form-data">
+                <h3 class="section-title mt-5 ">Adição de Categorias</h3>
+
+                <input type="hidden" name="type" value="create_category">
+
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Digite a Categoria" name="name">
+                </div>
+                <input type="submit" class="btn card-btn" value="Adicionar Categoria">
+
+            </form>
+
+        </div>
+    </div>
+
 </div>
 
 <?php
