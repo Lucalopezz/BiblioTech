@@ -37,8 +37,7 @@ if (!empty($flassMesage['msg'])) {
     <header>
         <nav id="main-navbar" class="navbar navbar-expand-lg">
             <a href="<?= $BASE_URL ?>" class="navbar-brand">
-                <img src="https://w7.pngwing.com/pngs/529/1004/png-transparent-book-information-open-book-angle-text-rectangle.png"
-                    alt="Bibliotech Logo" id="logo">
+            <i class="fa-solid fa-book" id="logo"></i>
                 <span id="bibliotech-title">Bibliotech</span>
             </a>
 

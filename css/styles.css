@@ -1,18 +1,42 @@
 /*===================================== Navbar =======================================*/
+html {
+  --title-color: #fff;
+  --hover-color: #999;
+  --hover-color-2: #333;
+  --hover-color-3: #444;
+  --background-color: #000000;
+  --principal-color: #f5c518;
+  --help-color: #ccc;
+  --book-card-color: #1a1a1a;
+  --btn-color: #5799ef;
+  --btn-color-2: #0dcaf0;
+  --btn-color-3: #dc3545;
+  --mesage-error-color: #842029;
+  --mesage-error-color-bg: #f8d7da;
+  --mesage-error-color-border: #f5c2c7;
+  --mesage-success-color: #0f5132;
+  --mesage-success-color-bg: #d1e7dd;
+  --mesage-success-color-border: #badbcc;
+
+  scroll-behavior: smooth;
+}
+
+/*===================================== Navbar =======================================*/
 .navbar-brand {
   position: relative;
 }
 
 #logo {
-  width: 50px;
+  font-size: 30px;
+  color: var(--title-color);
 }
 
 #bibliotech-title {
-  color: #fff;
+  color: var(--title-color);
   position: absolute;
   bottom: -2px;
   font-size: 30px;
-  left: 55px;
+  left: 30px;
   font-weight: bold;
 }
 
@@ -22,7 +46,7 @@
 
 #search-form {
   margin: 0 auto;
-  background: #fff;
+  background: var(--title-color);
   border-radius: 5px;
   width: 50%;
   margin-left: 180px;
@@ -44,12 +68,13 @@
 }
 
 .navbar .nav-item .nav-link {
-  color: #fff;
+  color: var(--title-color);
   transition: 0.5s;
 }
 
-.navbar .nav-item .nav-link:hover {
-  color: #999;
+.navbar .nav-item .nav-link:hover,
+#bibliotech-title:hover {
+  color: var(--hover-color);
 }
 
 .bold {
@@ -58,8 +83,8 @@
 
 /* ========================================= Footer ======================================*/
 #footer {
-  background-color: #000000;
-  color: #fff;
+  background-color: var(--background-color);
+  color: var(--title-color);
   text-align: center;
   margin: 0;
   padding: 20px;
@@ -86,12 +111,12 @@
 }
 
 #social-container li:hover {
-  background-color: #333;
+  background-color: var(--hover-color-2);
 }
 
 #social-container li a,
 #footer-links-container li a {
-  color: #fff;
+  color: var(--title-color);
   transition: 0.5s;
 }
 
@@ -110,7 +135,7 @@
 #login-container h2,
 #register-container h2 {
   text-align: center;
-  border-bottom: 2px solid #f5c518;
+  border-bottom: 2px solid var(--principal-color);
   width: 200px;
   margin: 0 auto;
   padding: 10px;
@@ -127,29 +152,29 @@
 #register-container form div,
 #edit-container div,
 #edit-container-password div,
-.new-movie-container .form-group,
+.new-book-container .form-group,
 #review-form-id div,
-#edit-movie-form div {
+#edit-book-form div {
   margin-bottom: 15px;
 }
 .card-btn {
   width: 100%;
-  color: #000;
-  background-color: #f5c518;
-  border: 2px solid #f5c518;
+  color: var(--background-color);
+  background-color: var(--principal-color);
+  border: 2px solid var(--principal-color);
 }
 
 .card-btn:hover {
   background-color: transparent;
-  color: #f5c518;
-  border: 2px solid #f5c518;
+  color: var(--principal-color);
+  border: 2px solid var(--principal-color);
 }
 
 #profile-image-container,
 .profile-image-container {
   width: 150px;
   height: 150px;
-  border: 6px solid #f5c518;
+  border: 6px solid var(--principal-color);
   border-radius: 100%;
   background-size: cover;
   background-position: center;
@@ -162,7 +187,7 @@
 }
 
 .page-description {
-  color: #999;
+  color: var(--hover-color);
 }
 
 #bio {
@@ -170,15 +195,15 @@
 }
 
 .form-control.disabled {
-  background-color: #bbb;
+  background-color: var(--hover-color);
 }
 
 #change-password-container {
   margin-top: 30px;
 }
-/* ===== Alterações necessarias ===== */
+
 .edit-profile-page .card-btn,
-#add-movie-container .card-btn,
+#add-book-container .card-btn,
 #review-form .card-btn,
 #edit-book-form .card-btn {
   width: auto;
@@ -186,20 +211,20 @@
 /* ===================================== Home ========================================================= */
 
 #main-container {
-  background-color: #000000;
-  color: #fff;
+  background-color: var(--background-color);
+  color: var(--title-color);
   min-height: 90vh;
   padding: 40px;
 }
 .section-title {
   font-size: 24px;
-  border-left: 4px solid #f5c518;
+  border-left: 4px solid var(--principal-color);
   padding-left: 12px;
   margin-top: 20px;
 }
 
 .section-description {
-  color: #ccc;
+  color: var(--help-color);
   font-size: 18px;
 }
 .books-container {
@@ -208,7 +233,7 @@
   margin: 0 -15px;
 }
 .book-card {
-  background-color: #1a1a1a;
+  background-color: var(--book-card-color);
   width: 18%;
   margin-bottom: 30px;
   margin-left: 1%;
@@ -226,42 +251,42 @@
 
 .card-title a {
   font-size: 16px;
-  color: #fff;
+  color: var(--title-color);
 }
 
 .fas.fa-star {
-  color: #f5c518;
+  color: var(--principal-color);
 }
 
 .rating {
-  color: #ccc;
+  color: var(--help-color);
 }
 
 .rate-btn {
   margin-bottom: 15px;
-  color: #5799ef;
-  background-color: #333;
-  border-color: #333;
+  color: var(--btn-color);
+  background-color: var(--hover-color-2);
+  border-color: var(--hover-color-2);
   width: 100%;
   font-weight: bold;
 }
 
 .rate-btn:hover {
-  background-color: #444;
-  border-color: #444;
+  background-color: var(--hover-color-3);
+  border-color: var(--hover-color-3);
 }
 
 .card-btn {
-  color: #000;
-  background-color: #f5c518;
-  border: 2px solid #f5c518;
+  color: var(--background-color);
+  background-color: var(--principal-color);
+  border: 2px solid var(--principal-color);
   width: 100%;
 }
 
 .card-btn:hover {
   background-color: transparent;
-  color: #f5c518;
-  border-color: #f5c518;
+  color: var(--principal-color);
+  border-color: var(--principal-color);
 }
 #add-book-container .card-btn,
 #review-form-id .card-btn {
@@ -283,23 +308,23 @@
   text-align: right;
   margin-bottom: 1rem;
 }
-#add-category-form{
+#add-category-form {
   text-align: left;
   margin-bottom: 1rem;
 }
-#books-dashboard{
+#books-dashboard {
   max-height: 400px;
   overflow-y: scroll;
 }
 
 .table-book-title {
-  color: #fff;
+  color: var(--title-color);
   font-weight: bold;
   transition: 0.5s;
 }
 
 .table-book-title:hover {
-  color: #f5c518;
+  color: var(--principal-color);
 }
 
 .actions-column {
@@ -323,24 +348,24 @@
 
 .edit-btn {
   text-decoration: none;
-  background-color: #0dcaf0;
-  color: #fff;
+  background-color: var(--btn-color-2);
+  color: var(--title-color);
 }
 
 .edit-btn:hover {
   background-color: transparent;
-  color: #0dcaf0;
+  color: var(--btn-color-2);
   text-decoration: none;
 }
 
 .delete-btn {
-  background-color: #dc3545;
-  color: #fff;
+  background-color: var(--btn-color-3);
+  color: var(--title-color);
 }
 
 .delete-btn:hover {
   background-color: transparent;
-  color: #dc3545;
+  color: var(--btn-color-3);
   text-decoration: none;
 }
 
@@ -370,7 +395,7 @@
 .page-title:after {
   content: "";
   width: 300px;
-  border-bottom: 2px solid #f5c518;
+  border-bottom: 2px solid var(--principal-color);
   display: block;
   margin: 0 auto;
   padding-top: 7px;
@@ -388,13 +413,13 @@
 }
 #image-edit .book-image-container {
   margin-top: 40%;
-  border: 6px solid #f5c518;
+  border: 6px solid var(--principal-color);
   border-radius: 3px;
 }
 /*======================Message===============*/
 
 .msg-container {
-  background-color: #000;
+  background-color: var(--background-color);
   padding: 15px;
 }
 
@@ -402,18 +427,18 @@
   width: 60%;
   margin: 0 auto;
   padding: 10px;
-  border: solid 1px #000;
+  border: solid 1px var(--background-color);
   text-align: center;
 }
 
 .msg.error {
-  color: #842029;
-  background-color: #f8d7da;
-  border-color: #f5c2c7;
+  color: var(--mesage-error-color);
+  background-color: var(--mesage-error-color-bg);
+  border-color: var(--mesage-error-color-border);
 }
 
 .msg.success {
-  color: #0f5132;
-  background-color: #d1e7dd;
-  border-color: #badbcc;
+  color: var(--mesage-success-color);
+  background-color: var(--mesage-success-color-bg);
+  border-color: var(--mesage-success-color-border);
 }
