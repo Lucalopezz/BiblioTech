@@ -2,6 +2,7 @@
 require_once("globals.php");
 require_once("db.php");
 require_once("models/Message.php");
+require_once("dao/UserDAO.php");
 
 $message = new Message($BASE_URL);
 
@@ -11,8 +12,11 @@ if (!empty($flassMesage['msg'])) {
     // limpar a msg
     $message->clearMessage();
 }
-?>
+$userDao = new UserDAO($conn, $BASE_URL);
 
+$userData = $userDao->verifyToken(false);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +41,7 @@ if (!empty($flassMesage['msg'])) {
     <header>
         <nav id="main-navbar" class="navbar navbar-expand-lg">
             <a href="<?= $BASE_URL ?>" class="navbar-brand">
-            <i class="fa-solid fa-book" id="logo"></i>
+                <i class="fa-solid fa-book" id="logo"></i>
                 <span id="bibliotech-title">Bibliotech</span>
             </a>
 
@@ -60,23 +64,25 @@ if (!empty($flassMesage['msg'])) {
 
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav">
-                    <!--Logado -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $BASE_URL ?>">
-                            <i class="fa-solid fa-book"></i> Livros novos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $BASE_URL ?>dashboard.php">Minhas Críticas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link bold" href="<?= $BASE_URL ?>editprofile.php">
-                            <i class="fa-solid fa-user"></i> Lucas
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= $BASE_URL ?>logout.php">Sair</a>
-                    </li>
+                    <?php if ($userData): ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $BASE_URL ?>dashboard.php"><i class="fa-solid fa-star"></i> Minhas Críticas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link bold" href="<?= $BASE_URL ?>editprofile.php">
+                                <i class="fa-solid fa-user"></i>
+                                <?= $userData->name ?>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $BASE_URL ?>logout.php"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $BASE_URL ?>authUser.php">Entrar / Cadastrar</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>

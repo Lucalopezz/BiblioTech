@@ -6,6 +6,7 @@ class User
     public $lastname;
     public $email;
     public $password;
+ 
     public $bio;
     public $token;
 

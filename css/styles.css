@@ -146,7 +146,6 @@ html {
   max-width: 400px;
   margin: 30px auto;
 }
-/* ===== Alterações necessarias ===== */
 
 #login-container form div,
 #register-container form div,
@@ -208,6 +207,10 @@ html {
 #edit-book-form .card-btn {
   width: auto;
 }
+.photo-edit{
+  margin-left: 6.2rem;
+}
+
 /* ===================================== Home ========================================================= */
 
 #main-container {
