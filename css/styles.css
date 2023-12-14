@@ -301,6 +301,74 @@ html {
   width: 100%;
   font-weight: bold;
 }
+/* ========================= Book =================== */
+.book-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.book-image-container {
+  height: 400px;
+  min-width: 300px;
+  background-position: center;
+  background-size: cover;
+  object-fit: contain;
+  margin-bottom: 2rem;
+}
+
+.book-details {
+  margin: 25px 0;
+}
+
+.pipe {
+  border: 1px solid var(--hover-color-2);
+  margin: 0 10px;
+}
+
+#reviews-title {
+  margin-bottom: 25px;
+}
+
+#review-form-container {
+  background-color: var(--hover-color-2);
+  padding: 20px;
+}
+#review-form-container .card-btn {
+  width: auto;
+}
+
+#review-form-container select,
+#review-form-container textarea {
+  width: 50%;
+  margin-bottom: 15px;
+}
+
+#reviews-container {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 4px solid var(--principal-color);
+}
+
+.review {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--hover-color-2);
+}
+
+.author-details-container {
+  padding-top: 20px;
+}
+
+.author-name a {
+  color: var(--principal-color);
+}
+
+.comment-title {
+  color: var(--hover-color);
+}
+
+
+
 
 /* ===================================== Painel Administrativo ========================================================= */
 
@@ -384,13 +452,6 @@ html {
 #add-book-form {
   text-align: left;
 }
-/*
-.book-image-container {
-  height: 400px;
-  min-width: 200px;
-  background-position: center;
-  background-size: cover;
-}*/
 .page-title {
   text-align: center;
 }
@@ -407,12 +468,6 @@ html {
 
 #edit-book-form .form-group {
   width: 70%;
-}
-.book-image-container {
-  height: 400px;
-  min-width: 200px;
-  background-position: center;
-  background-size: cover;
 }
 #image-edit .book-image-container {
   margin-top: 40%;
