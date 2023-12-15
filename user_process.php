@@ -21,6 +21,7 @@ if ($type === "update") {
   $lastname = filter_input(INPUT_POST, "lastname");
   $email = filter_input(INPUT_POST, "email");
   $bio = filter_input(INPUT_POST, "bio");
+  $gender = filter_input(INPUT_POST, "gender");
 
   $user = new User();
 
@@ -28,6 +29,7 @@ if ($type === "update") {
   $userData->lastname = $lastname;
   $userData->email = $email;
   $userData->bio = $bio;
+  $userData->gender = $gender;
 
   $userDAO->update($userData);
 

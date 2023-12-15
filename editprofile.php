@@ -11,6 +11,13 @@ $user = new User();
 
 $fullName = $user->getFullName($userData);
 
+if ($userData->gender == "Feminino") {
+    $image = "/img/users/mulher_icon.png";
+} elseif ($userData->gender == "Masculino") {
+    $image = "/img/users/homem.png";
+} else {
+    $image = "/img/users/user.png";
+}
 
 ?>
 <div id="main-container" class="container-fluid">
@@ -46,10 +53,23 @@ $fullName = $user->getFullName($userData);
                 </div>
 
                 <div class="col-md-4">
-                    <div id="profile-image-container"
-                        style="background-image: url('<?= $BASE_URL ?>img/users/user.png');"></div>
+                    <div id="profile-image-container" style="background-image: url('<?= $BASE_URL . $image ?>');"></div>
+                    <div class="form-group photo-edit">
+                        <label for="bio">Seu Gênero:</label>
+                        <select class="form-control" name="gender" id="gender">
+                            <option value="Indefinido" <?= $userData->gender == "Indefinido" ? "selected" : "" ?>>
+                                Indefinido
+                            </option>
+                            <option value="Masculino" <?= $userData->gender == "Masculino" ? "selected" : "" ?>>
+                                Masculino
+                            </option>
+                            <option value="Feminino" <?= $userData->gender == "Feminino" ? "selected" : "" ?>>
+                                Feminino
+                            </option>
+                        </select>
+                    </div>
 
-                    <div class="form-group photo-edit" >
+                    <div class="form-group photo-edit">
                         <label for="bio">Sobre você:</label>
                         <textarea class="form-control" name="bio" id="bio" rows="5"
                             placeholder="Conte quem você é, quais livros você gosta..."><?= $userData->bio ?></textarea>

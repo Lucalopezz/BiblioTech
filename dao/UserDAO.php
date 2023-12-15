@@ -24,6 +24,7 @@ class UserDAO implements UserDAOInterface
         $user->id = $data['id'];
         $user->name = $data['name'];
         $user->lastname = $data['lastname'];
+        $user->gender = $data['gender'];
         $user->email = $data['email'];
         $user->password = $data['password'];
         $user->bio = $data['bio'];
@@ -55,12 +56,17 @@ class UserDAO implements UserDAOInterface
 
         }
     }
+    public function askGender($gen){
+
+    }
+
     public function update(User $user, $redirect = true)
     {
-        $stmt = $this->conn->prepare("UPDATE users SET name = :name, lastname = :lastname, email = :email, bio = :bio, token = :token WHERE id = :id");
+        $stmt = $this->conn->prepare("UPDATE users SET name = :name, lastname = :lastname, gender = :gender, email = :email, bio = :bio, token = :token WHERE id = :id");
 
         $stmt->bindParam(":name", $user->name);
         $stmt->bindParam(":lastname", $user->lastname);
+        $stmt->bindParam(":gender", $user->gender);
         $stmt->bindParam(":email", $user->email);
         $stmt->bindParam(":bio", $user->bio);
         $stmt->bindParam(":token", $user->token);

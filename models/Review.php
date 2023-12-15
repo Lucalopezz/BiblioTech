@@ -15,6 +15,7 @@ interface ReviewDAOInterface{
     public function buildReview($data);
     public function create(Review $review);
     public function getBooksReview($id);
+    public function getReviewsByUser($id);
     public function hasAlreadyReviewed($id, $userId);
     public function getRatings($id);
 

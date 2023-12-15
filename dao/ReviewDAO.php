@@ -76,9 +76,25 @@ class ReviewDAO implements ReviewDAOInterface
 
         } 
         return $reviews;
-
-
     }
+    public function getReviewsByUser($id){
+        $reviews = [];
+        $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE users_id = :users_id");
+
+        $stmt->bindParam(":users_id", $id);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+            $reviewsData = $stmt->fetchAll();
+
+            foreach($reviewsData as $review){
+
+                $reviews[] = $review ;
+            }
+
+        } 
+        return $reviews;
+    }
+
     public function hasAlreadyReviewed($id, $userId)
     {
         $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE books_id = :books_id AND users_id = :users_id");

@@ -4,6 +4,7 @@ class User
     public $id;
     public $name;
     public $lastname;
+    public $gender;
     public $email;
     public $password;
  
@@ -29,6 +30,7 @@ class User
 interface UserDAOInterface
 {
     public function buildUser($data);
+    public function askGender($gen);
     public function create(User $user, $authUser = false);
     public function update(User $user, $redirect = true);
     public function verifyToken($protected = false);

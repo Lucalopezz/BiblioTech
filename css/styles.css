@@ -189,7 +189,7 @@ html {
   color: var(--hover-color);
 }
 
-#bio {
+#bio, .photo-edit select {
   max-width: 400px;
 }
 
