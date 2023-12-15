@@ -63,7 +63,7 @@ $bookReviews = $reviewDAO->getBooksReview($id);
             <div class="book-image-container"
                 style="background-image: url(<?= $BASE_URL ?>img/books/<?= $book->image ?>);">
             </div>
-            <p>
+            <p class="description">
                 <?= $book->description ?>
             </p>
 

@@ -2,7 +2,7 @@
 require_once("models/Book.php");
 require_once("models/Message.php");
 
-//require_once("dao/ReviewDAO.php");
+require_once("dao/ReviewDAO.php");
 
 
 class BookDAO implements BookDAOInterface
@@ -30,12 +30,12 @@ class BookDAO implements BookDAOInterface
         $book->pages = $data['pages'];
 
 
-        //recebe as ratings do filme
-        //$reviewDao = new ReviewDao($this->conn, $this->url);
+        //recebe as ratings do livro
+        $reviewDao = new ReviewDao($this->conn, $this->url);
 
-        //$rating = $reviewDao->getRatings($book->id);
+        $rating = $reviewDao->getRatings($book->id);
 
-        //$book->rating = $rating;
+        $book->rating = $rating;
 
         return $book;
 

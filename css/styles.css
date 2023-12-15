@@ -366,7 +366,10 @@ html {
 .comment-title {
   color: var(--hover-color);
 }
-
+.description{
+  text-align: left;
+  text-indent: 1em;
+}
 
 
 

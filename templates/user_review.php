@@ -3,8 +3,6 @@ require_once('models/Users.php');
 $userModel = new User();
 $fullName = $userModel->getFullName($review->user);
 
-
-
 ?>
 
 
