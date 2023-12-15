@@ -37,7 +37,7 @@ $userReviws = $reviewDAO->getReviewsByUser($userData->id);
                             <?= $review['rating'] ?>
                         </td>
                         <td class="actions-column">
-                            <a href="<?= $BASE_URL ?>editreviw.php?id=<?= $review['id'] ?>" class="edit-btn"><i
+                            <a href="<?= $BASE_URL ?>editreview.php?id=<?= $review['id'] ?>" class="edit-btn"><i
                                     class="far fa-edit"></i>Editar</a>
                             <form action="<?= $BASE_URL ?>review_process.php" method="post">
                                 <input type="hidden" name="type" value="delete">

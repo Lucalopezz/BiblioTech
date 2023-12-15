@@ -57,14 +57,16 @@ if ($userData->gender == "Feminino") {
                     <div class="form-group photo-edit">
                         <label for="bio">Seu Gênero:</label>
                         <select class="form-control" name="gender" id="gender">
-                            <option value="Indefinido" <?= $userData->gender == "Indefinido" ? "selected" : "" ?>>
-                                Indefinido
-                            </option>
+                            <option>Selecione</option>
+                            
                             <option value="Masculino" <?= $userData->gender == "Masculino" ? "selected" : "" ?>>
                                 Masculino
                             </option>
                             <option value="Feminino" <?= $userData->gender == "Feminino" ? "selected" : "" ?>>
                                 Feminino
+                            </option>
+                            <option value="Indefinido" <?= $userData->gender == "Indefinido" ? "selected" : "" ?>>
+                                Outro
                             </option>
                         </select>
                     </div>

@@ -13,7 +13,7 @@ $reviewDAO = new ReviewDAO($conn, $BASE_URL);
 $type = filter_input(INPUT_POST, "type"); 
 $userData = $userDAO->verifyToken();
 
-
+//echo $type;exit;
 if ($type === 'create') {
 
     // Recebendo dados do post
@@ -43,7 +43,36 @@ if ($type === 'create') {
         $message->setMessage("Informações Inválidas 1", "error", "index.php");
     }
 
-}else {
+}else if($type === 'update'){
+    $rating = filter_input(INPUT_POST,"rating");
+    $review = filter_input(INPUT_POST,"review");
+    $id = filter_input(INPUT_POST,"id");
+    $idBook = filter_input(INPUT_POST,"idBook");
+    
+
+    $reviewObject = new Review();
+
+    $bookData = $bookDAO->findById($idBook);
+    //print_r($bookData->id);exit;
+
+    if($bookData){
+        //verifica dados min
+        if(!empty($rating) && !empty($review)){
+            $reviewObject->rating = $rating;
+            $reviewObject->review = $review;
+            $reviewObject->id = $id;
+
+            $reviewDAO->update($reviewObject);
+        }else{
+            $message->setMessage("Informações Faltando, preencha todos os campos!", "error", "back");
+            
+        }
+    }else{
+        $message->setMessage("Informações Inválidas 1", "error", "index.php");
+    }
+
+}
+else {
     $message->setMessage("Informações Inválidas 2", "error", "index.php");
 
 }

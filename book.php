@@ -5,7 +5,7 @@ require_once("dao/BookDAO.php");
 require_once("dao/ReviewDAO.php");
 require_once("models/Book.php");
 
-//pegar o id do filme
+//pegar o id do livro
 
 
 $id = filter_input(INPUT_GET, "id");
@@ -23,7 +23,7 @@ if (empty($id)) {
 
     // verifica se o livro existe
     if (!$book) {
-        $message->setMessage("Filme não encontrado!", "error", "index.php");
+        $message->setMessage("Livro não encontrado!", "error", "index.php");
 
     }
 }

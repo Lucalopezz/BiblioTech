@@ -52,6 +52,18 @@ class ReviewDAO implements ReviewDAOInterface
         // Redireciona e apresenta mensagem de sucesso
         $this->message->setMessage("Crítica feita com sucesso!", "success", "back");
     }
+    public function update(Review $review){
+        $stmt = $this->conn->prepare("UPDATE reviews SET rating = :rating, review = :review WHERE id = :id");
+
+        $stmt->bindParam(":rating", $review->rating);
+        $stmt->bindParam(":review", $review->review);
+        $stmt->bindParam(":id", $review->id);
+
+        $stmt->execute();
+
+        $this->message->setMessage("Comentário editado!", "success", "dashboard.php");
+    }
+
     public function getBooksReview($id)
     {
         $reviews = [];
@@ -93,6 +105,23 @@ class ReviewDAO implements ReviewDAOInterface
 
         } 
         return $reviews;
+    }
+    public function findById($id){
+        $review = [];
+
+        // Consulta para obter dados básicos do livro
+        $stmtBook = $this->conn->prepare("SELECT * FROM reviews WHERE id = :id");
+        $stmtBook->bindParam(":id", $id);
+        $stmtBook->execute();
+
+        if ($stmtBook->rowCount() > 0) {
+            $reviewData = $stmtBook->fetch();
+            $review = $this->buildReview($reviewData);
+
+        }
+
+
+        return $review;
     }
 
     public function hasAlreadyReviewed($id, $userId)
