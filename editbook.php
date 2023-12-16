@@ -93,7 +93,7 @@ $categories = $bookDAO->FindCategory();
                         <textarea name="description" id="description" placeholder="Descreva o Filme" rows="3"
                             class="form-control"><?= $book->description ?></textarea>
                     </div>
-                    <input type="submit" class="btn card-btn" value="Editar Filme">
+                    <input type="submit" class="btn card-btn" value="Editar Livro">
                 </form>
             </div>
             <div class="col-md-3 " id="image-edit">
