@@ -27,7 +27,7 @@ if ($userData->gender == "Feminino") {
             <div class="row">
                 <div class="col-md-4">
                     <h1>
-                        <?= $fullName ?>
+                        <a id="name-edit" href="<?=$BASE_URL?>profile.php?id=<?=$userData->id?>"><?= $fullName ?></a>
                     </h1>
                     <p class="page-description">
                         Altere seus dados no formulário abaixo:

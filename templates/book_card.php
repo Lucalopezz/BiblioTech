@@ -3,7 +3,6 @@
 if (empty($book->image)) {
     $book->image = "book_cover.jpg";
 }
-
 ?>
 <div class="card book-card">
     <div class="card-img-top" style="background-image: url('<?= $BASE_URL ?>img/books/<?= $book->image ?>');"></div>

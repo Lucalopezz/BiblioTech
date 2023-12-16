@@ -370,7 +370,16 @@ html {
   text-align: left;
   text-indent: 1em;
 }
+#name-edit{
+  color: var(--title-color);
+  text-decoration: none;
+  transition: .4s;
 
+}
+#name-edit:hover{
+  color: var(--principal-color);
+
+}
 
 
 /* ===================================== Painel Administrativo ========================================================= */

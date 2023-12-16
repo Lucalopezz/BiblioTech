@@ -19,14 +19,18 @@ require_once("globals.php");
     <div id="footer-links-container">
         <ul>
             <li>
-                <a href="#">Adiconar Crítica</a>
+                <a href="<?= $BASE_URL ?>">Adiconar Crítica</a>
             </li>
             <li>
-                <a href="<?= $BASE_URL ?>">Entra / Registrar</a>
+                <a href="<?= $BASE_URL ?>">Entrar em Contato</a>
             </li>
+          
+           
         </ul>
     </div>
-    <p>&copy; 2023 Lucas Dalossa Lopes</p>
+    <p>&copy; 2024 Lucas Dalossa Lopes   <img class="ml-5" alt="php" src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" /></p>
+    
+
 </footer>
 
 
