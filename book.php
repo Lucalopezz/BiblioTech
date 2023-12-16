@@ -99,7 +99,7 @@ $bookReviews = $reviewDAO->getBooksReview($id);
                         <div class="form-group">
                             <label for="review">Seu comentário:</label>
                             <textarea name="review" id="review" rows="3" placeholder="Deixe seu comentário"
-                                class="form-control"></textarea>
+                                class="form-control" maxlength="100"></textarea>
                         </div>
                         <input type="submit" class="btn card-btn" value="Enviar comentário">
 

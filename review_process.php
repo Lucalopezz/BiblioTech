@@ -68,12 +68,22 @@ if ($type === 'create') {
             
         }
     }else{
-        $message->setMessage("Informações Inválidas 1", "error", "index.php");
+        $message->setMessage("Informações Inválidas!", "error", "index.php");
     }
 
-}
-else {
-    $message->setMessage("Informações Inválidas 2", "error", "index.php");
+}else if($type === 'delete'){
+    $id = filter_input(INPUT_POST, "id");
+    $review = $reviewDAO->findById($id);
+    if($review) {
+
+        $reviewDAO->destroy($review->id);
+
+    } else {
+        $message->setMessage("Informações Inválidas!", "error", "index.php");
+    }
+
+}else {
+    $message->setMessage("Informações Inválidas!", "error", "index.php");
 
 }
 ?>

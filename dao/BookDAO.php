@@ -135,6 +135,32 @@ class BookDAO implements BookDAOInterface
 
     public function findByTitle($title)
     {
+        if($title == ""){
+            $this->message->setMessage("", "", "index.php");
+            
+        }else{
+            $books = [];
+
+            $stmt = $this->conn->prepare("SELECT * FROM books
+                                        WHERE title LIKE :title");
+    
+            $stmt->bindValue(":title", '%' . $title . '%'); //esses % são para achar em todo o nome a letra
+    
+            $stmt->execute();
+    
+            if ($stmt->rowCount() > 0) {
+    
+                $booksArray = $stmt->fetchAll();
+    
+                foreach ($booksArray as $book) {
+                    $books[] = $this->buildBook($book);
+                }
+    
+            }
+    
+            return $books;
+        }
+       
 
     }
  

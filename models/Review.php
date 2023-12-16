@@ -20,7 +20,7 @@ interface ReviewDAOInterface{
     public function getReviewsByUser($id);
     public function hasAlreadyReviewed($id, $userId);
     public function getRatings($id);
+    public function destroy($id);
 
-    
    
 }

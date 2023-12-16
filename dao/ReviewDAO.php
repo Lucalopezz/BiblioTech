@@ -63,7 +63,6 @@ class ReviewDAO implements ReviewDAOInterface
 
         $this->message->setMessage("Comentário editado!", "success", "dashboard.php");
     }
-
     public function getBooksReview($id)
     {
         $reviews = [];
@@ -164,12 +163,17 @@ class ReviewDAO implements ReviewDAOInterface
   
         }
   
-        return $rating;
-  
-      
-
-        
+        return $rating;  
     }
+    public function destroy($id){
+         $stmt = $this->conn->prepare("DELETE FROM reviews WHERE id = :id");
+         $stmt->bindParam(":id", $id);
+         $stmt->execute();
+
+        $this->message->setMessage("Review deletado com sucesso!", "success", "dashboard.php");
+
+    }
+
 }
 
 ?>

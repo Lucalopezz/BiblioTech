@@ -10,7 +10,7 @@ if (empty($book->image)) {
     <div class="card-body">
         <p class="card-rating">
             <i class="fas fa-star"></i>
-            <span class="rating"><?= 9;//$book->rating?></span>
+            <span class="rating"><?= $book->rating?></span>
         </p>
         <h5 class="card-title">
             <a href="<?= $BASE_URL ?>book.php?id=<?= $book->id ?>"><?= $book->title ?></a>

@@ -20,11 +20,12 @@ $userReviws = $reviewDAO->getReviewsByUser($userData->id);
 <div id="main-container" class="container-fluid">
     <h2 class="section-title">Minhas Críticas</h2>
     <p class="section-desciption">Veja e edite suas críticas:</p>
-    <div class="col-md-12" id="books-dashboard">
+    <div class="col-md-12" id="reviews-dashboard">
         <table class="table table-dark">
             <thead>
                 <th scope="col">Texto</th>
                 <th scope="col">Nota</th>
+
                 <th scope="col" class="actions-column">Ações</th>
             </thead>
             <tbody>
@@ -33,11 +34,12 @@ $userReviws = $reviewDAO->getReviewsByUser($userData->id);
                         <td><a href="<?= $BASE_URL ?>book.php?id=<?= $review['books_id'] ?>" class="table-book-title">
                                 <?= $review['review'] ?>
                             </a></td>
+
                         <td><i class="fas fa-star"></i>
                             <?= $review['rating'] ?>
                         </td>
                         <td class="actions-column">
-                            <a href="<?= $BASE_URL ?>editreview.php?id=<?= $review['id'] ?>" class="edit-btn"><i
+                            <a class="edit-btn" href="<?= $BASE_URL ?>editreview.php?id=<?= $review['id'] ?> " ><i
                                     class="far fa-edit"></i>Editar</a>
                             <form action="<?= $BASE_URL ?>review_process.php" method="post">
                                 <input type="hidden" name="type" value="delete">
