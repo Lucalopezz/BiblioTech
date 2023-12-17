@@ -3,7 +3,6 @@
 require_once("models/Adm.php");
 require_once("models/Message.php");
 
-
 class AdmUserDAO implements AdmUserDAOInterface
 {
     private $conn;

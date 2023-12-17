@@ -301,6 +301,16 @@ html {
   width: 100%;
   font-weight: bold;
 }
+.read-more{
+  color: var(--title-color);
+  text-decoration: none;
+  margin-left: 95%;
+  transition: .5s;
+}
+.read-more:hover{
+  color: var(--principal-color);
+  text-decoration: none;
+}
 /* ========================= Book =================== */
 .book-container {
   display: flex;

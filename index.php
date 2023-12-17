@@ -3,7 +3,7 @@ require_once("templates/header.php");
 
 require_once("dao/BookDAO.php");
 
-//dao dos filmes
+
 $bookDAO = new BookDAO($conn, $BASE_URL);
 
 $lastesBooks = $bookDAO->getLatestBooks();
@@ -52,7 +52,7 @@ $AllBooks = $bookDAO->getAllBooks();
             <p class="empty-list">Não há livros cadastrados</p>
         <?php endif; ?>
     </div>
-    
+
 
     <h2 class="section-title">Livros de Romance</h2>
     <p class="section-desciption">
@@ -79,19 +79,23 @@ $AllBooks = $bookDAO->getAllBooks();
     </p>
     <div class="books-container">
         <?php
-        
+        // pega os últimos 7 livros
+        $last7AllBooks = array_slice($AllBooks, 0, 10);
 
-        foreach ($AllBooks as $book):
+        foreach ($last7AllBooks as $book):
             ?>
             <?php require('templates/book_card.php'); ?>
         <?php endforeach; ?>
 
-        <?php if (count($last7RomBooks) == 0): ?>
+        <?php if (count($AllBooks) == 0): ?>
             <p class="empty-list">Não há livros cadastrados</p>
+        <?php endif; ?>
+        <?php if (count($AllBooks) >= 10): ?>
+            <a class="read-more " href="<?= $BASE_URL ?>allBooks.php">Ver Mais</a>
         <?php endif; ?>
     </div>
 
-    
+
 
 
 </div>
