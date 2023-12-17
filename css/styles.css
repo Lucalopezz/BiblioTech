@@ -311,6 +311,25 @@ html {
   color: var(--principal-color);
   text-decoration: none;
 }
+.pagination {
+  text-align: center;
+  margin-top: 20px; 
+  display: flex;
+  justify-content: center;
+}
+.pagination a {
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  margin-right: 5px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #fff;
+  color: #000;
+}
+
 /* ========================= Book =================== */
 .book-container {
   display: flex;

@@ -26,7 +26,7 @@ CREATE TABLE reviews (
   users_id INT(11) UNSIGNED,
   book_id INT(11) UNSIGNED,
   FOREIGN KEY (users_id) REFERENCES users(id),
-  FOREIGN KEY (movies_id) REFERENCES movies(id)
+  FOREIGN KEY (books_id) REFERENCES books(id)
 
 );
 CREATE TABLE categories (

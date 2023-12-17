@@ -31,6 +31,7 @@ interface BookDAOInterface
     public function findById($id);
     public function findByTitle($title);
     public function findCategory();
+    public function getBooksForPage($livrosPorPagina, $paginaAtual);
     public function create(Book $book);
     public function createCategory($categoryName);
     public function update(Book $book);

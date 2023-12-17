@@ -83,6 +83,24 @@ class BookDAO implements BookDAOInterface
 
         return $books;
     }
+    public function getBooksForPage($livrosPorPagina, $paginaAtual)
+    {
+        $offset = ($paginaAtual - 1) * $livrosPorPagina;
+
+        $stmt = $this->conn->prepare("
+        SELECT b.*, r.rating
+        FROM books b
+        LEFT JOIN reviews r ON b.id = r.books_id
+        LIMIT :limit OFFSET :offset
+    ");
+        $stmt->bindParam(":limit", $livrosPorPagina, PDO::PARAM_INT);
+        $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        $books = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $books;
+    }
     public function getAllBooks()
     {
         $books = [];
@@ -135,35 +153,35 @@ class BookDAO implements BookDAOInterface
 
     public function findByTitle($title)
     {
-        if($title == ""){
+        if ($title == "") {
             $this->message->setMessage("", "", "index.php");
-            
-        }else{
+
+        } else {
             $books = [];
 
             $stmt = $this->conn->prepare("SELECT * FROM books
                                         WHERE title LIKE :title");
-    
+
             $stmt->bindValue(":title", '%' . $title . '%'); //esses % são para achar em todo o nome a letra
-    
+
             $stmt->execute();
-    
+
             if ($stmt->rowCount() > 0) {
-    
+
                 $booksArray = $stmt->fetchAll();
-    
+
                 foreach ($booksArray as $book) {
                     $books[] = $this->buildBook($book);
                 }
-    
+
             }
-    
+
             return $books;
         }
-       
+
 
     }
- 
+
 
     public function create(Book $book)
     {
