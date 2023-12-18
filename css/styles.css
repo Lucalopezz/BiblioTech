@@ -1,6 +1,14 @@
 /*===================================== Navbar =======================================*/
+/* Futuras Cores
+#4C93C2
+#54778F
+#2FA5F5
+#49545C
+#292F33*/
+
 html {
   --title-color: #fff;
+  --navbar-color:#121212;
   --hover-color: #999;
   --hover-color-2: #333;
   --hover-color-3: #444;
@@ -41,7 +49,7 @@ html {
 }
 
 #main-navbar {
-  background-color: #121212;
+  background-color: var(--navbar-color);
 }
 
 #search-form {
@@ -516,7 +524,7 @@ html {
   margin: 0 auto;
   padding-top: 7px;
 }
-/*========================== Edit Movie =============================== */
+/*========================== Edit Book =============================== */
 
 #edit-book-form .form-group {
   width: 70%;

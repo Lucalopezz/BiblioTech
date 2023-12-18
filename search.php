@@ -15,7 +15,7 @@ $books = $bookDAO->findByTitle($q);
     <p class="section-desciption">
         Resultados de busca retornados com base na sua pesquisa.
     </p>
-    <div class="movies-container">
+    <div class="books-container">
 
         <?php foreach ($books as $book): ?>
             <?php require('templates/book_card.php'); ?>

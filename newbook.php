@@ -22,7 +22,7 @@ $categories = $bookDAO->FindCategory();
 
 <div id="main-container" class="container-fluid">
 
-    <div class="offset-md-4 col-md-4 new-movie-container">
+    <div class="offset-md-4 col-md-4 new-book-container">
         <h1 class="page-title">Adicionar Livro</h1>
 
         <form action="<?= $BASE_URL ?>book_process.php" method="post" id="add-book-form" enctype="multipart/form-data">

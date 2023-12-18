@@ -27,10 +27,7 @@ if (empty($id)) {
 
     }
 }
-//checar se o livro tem imagem
-if ($book->image == "") {
-    $book->image = "movie_cover.jpg";
-}
+
 if (!empty($userData)) {
     //resgatar as reviews do livro
     $alreadyReviewed = $reviewDAO->hasAlreadyReviewed($id, $userData->id);
@@ -99,7 +96,7 @@ $bookReviews = $reviewDAO->getBooksReview($id);
                         <div class="form-group">
                             <label for="review">Seu comentário:</label>
                             <textarea name="review" id="review" rows="3" placeholder="Deixe seu comentário"
-                                class="form-control" maxlength="100"></textarea>
+                                class="form-control" maxlength="150"></textarea>
                         </div>
                         <input type="submit" class="btn card-btn" value="Enviar comentário">
 

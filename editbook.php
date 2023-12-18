@@ -27,10 +27,7 @@ if (empty($id)) {
 
     }
 }
-//checar se o filme tem imagem
-if ($book->image == "") {
-    $book->image = "movie_cover.jpg";
-}
+
 //pega as categorias
 $categories = $bookDAO->FindCategory();
 
