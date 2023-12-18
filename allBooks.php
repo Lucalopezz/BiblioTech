@@ -1,15 +1,19 @@
 <?php
 require_once("templates/header.php");
 require_once("dao/BookDAO.php");
+require_once("dao/ReviewDAO.php");
 
 $bookDAO = new BookDAO($conn, $BASE_URL);
+$reviewDAO = new ReviewDAO($conn, $BASE_URL);
 // Configurações de paginação
 $livrosPorPagina = 15;
 $paginaAtual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 
-// Recupera a lista de livros para a página atual
+// Recupera a lista de livros para a página atual, junto com os reviews
 $AllBooks = $bookDAO->getBooksForPage($livrosPorPagina, $paginaAtual);
-
+foreach($AllBooks as $book){
+    $book->rating = $reviewDAO->getRatings($book->id);
+}
 
 // Calcula o número total de páginas
 $totalPaginas = ceil(count($bookDAO->getAllBooks()) / $livrosPorPagina);

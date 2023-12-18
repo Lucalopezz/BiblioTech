@@ -87,17 +87,12 @@ class BookDAO implements BookDAOInterface
     {
         $offset = ($paginaAtual - 1) * $livrosPorPagina;
 
-        $stmt = $this->conn->prepare("
-        SELECT b.*, r.rating
-        FROM books b
-        LEFT JOIN reviews r ON b.id = r.books_id
-        LIMIT :limit OFFSET :offset
-    ");
+        $stmt = $this->conn->prepare("SELECT * FROM books LIMIT :limit OFFSET :offset");
         $stmt->bindParam(":limit", $livrosPorPagina, PDO::PARAM_INT);
         $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
-
+        
         $stmt->execute();
-
+        
         $books = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $books;
     }
