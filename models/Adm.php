@@ -11,6 +11,10 @@ class AdmUser
     {
         return bin2hex(random_bytes(50)); //cria uma string e embaralha
     }
+    public function generatePassword($password)
+    {
+        return password_hash($password, PASSWORD_DEFAULT); //cria uma string e embaralha
+    }
 
 
     
@@ -19,6 +23,7 @@ class AdmUser
 interface AdmUserDAOInterface
 {
     public function buildAdm($data);
+    public function createAdm(AdmUser $admUser, $authAdm = false);
     public function updateAdm($token, $id);
     public function findByToken($token);
     public function verifyTokenAdm($protected = false);

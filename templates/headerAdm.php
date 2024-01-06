@@ -53,7 +53,7 @@ if (!empty($flassMesage['msg'])) {
                 <ul class="navbar-nav">
                     <?php if ($admData): ?>
                         <li class="nav-item">
-                            <a class="nav-link bold" href="<?= $BASE_URL ?>controlPainel.php">
+                            <a class="nav-link bold" href="<?= $BASE_URL ?>addAdmUser.php">
                                 <i class="fa-solid fa-user"></i>
                                 <?= $admData->user ?>
                             </a>

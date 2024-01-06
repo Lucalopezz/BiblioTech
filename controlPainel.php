@@ -1,7 +1,4 @@
 <?php
-
-
-// Verifica se usuário está autenticado
 require_once("models/Adm.php");
 require_once("dao/AdmDAO.php");
 require_once("dao/BookDAO.php");
@@ -14,6 +11,7 @@ require_once("db.php");
 $admDAO = new AdmUserDAO($conn, $BASE_URL);
 $bookDAO = new BookDAO($conn, $BASE_URL);
 
+// Verifica se usuário está autenticado
 $admData = $admDAO->verifyTokenAdm(true);
 
 $adm = new AdmUser();
@@ -38,7 +36,7 @@ $categories = $bookDAO->FindCategory();
             <i class="fas fa-plus"></i> Adicionar Livro
         </a>
     </div>
-    <!--Tabela -->
+    <!--Tabela de livros -->
     <div class="col-md-12 " id="books-dashboard">
         <table class="table table-dark">
             <thead> <!-- cabeçalho da tabela -->
@@ -57,7 +55,8 @@ $categories = $bookDAO->FindCategory();
                                 <?= $book->title ?>
                             </a></td>
                         <td><i class="fas fa-star"></i>
-                            9
+                        <?= $book->rating ?>
+                            
                         </td>
                         <td class="actions-column">
                             <a href="<?= $BASE_URL ?>editbook.php?id=<?= $book->id ?>" class="edit-btn"><i
@@ -73,15 +72,20 @@ $categories = $bookDAO->FindCategory();
             </tbody>
         </table>
     </div>
+
+
     <br>
     <br>
+
+
     <h2 class="section-title mt-5 ">Adiministração de Categorias</h2>
     <p class="section-desciption">
         Adicione / Exclua
     </p>
+    <!--Tabela de categorias -->
     <div class="col-md-12 " id="books-dashboard">
         <table class="table table-dark">
-            <thead> <!-- cabeçalho da tabela -->
+            <thead> 
                 <th scope="col">#</th>
                 <th scope="col">Categorias</th>
                 <th scope="col" class="actions-column">Ações</th>
@@ -109,6 +113,7 @@ $categories = $bookDAO->FindCategory();
             </tbody>
         </table>
     </div>
+
     <!--Adicionar Categoria -->
     <div class="row">
         <div class="col-md-9" id="add-book-container"></div>
