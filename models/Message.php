@@ -15,7 +15,8 @@ class Message
         if ($redirect != "back") {
             header("Location: $this->url" . $redirect);
         } else {
-            header("Location:" . $_SERVER['HTTP_REFERER']); //volta pra ultima url acessada
+            $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "index.php";
+            header("Location: $referer");
         }
 
     }
