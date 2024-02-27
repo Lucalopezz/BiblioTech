@@ -48,3 +48,10 @@ CREATE TABLE books_categories (
   FOREIGN KEY (book_id) REFERENCES books(id),
   FOREIGN KEY (category_id) REFERENCES categories(id)
 );
+
+
+ALTER TABLE reviews
+DROP FOREIGN KEY reviews_ibfk_2;
+
+ALTER TABLE reviews
+ADD CONSTRAINT reviews_ibfk_2 FOREIGN KEY (books_id) REFERENCES books (id) ON DELETE CASCADE;
