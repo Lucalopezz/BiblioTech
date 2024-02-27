@@ -1,13 +1,14 @@
 html {
-  --title-color: #fff;
-  --navbar-color:#121212;
+  --title-color: #0C0C0C;
+  --title-color-nav: #fff;
+  --navbar-color:#4885e0;
   --hover-color: #999;
   --hover-color-2: #333;
   --hover-color-3: #444;
-  --background-color: #000000;
-  --principal-color: #f5c518;
+  --background-color: #f6f1f1;
+  --principal-color: #0143A5;
   --help-color: #ccc;
-  --book-card-color: #1a1a1a;
+  --book-card-color: #e4e4e4;
   --btn-color: #5799ef;
   --btn-color-2: #0dcaf0;
   --btn-color-3: #dc3545;
@@ -17,6 +18,10 @@ html {
   --mesage-success-color: #0f5132;
   --mesage-success-color-bg: #d1e7dd;
   --mesage-success-color-border: #badbcc;
+
+
+
+  --hate-btn: #e3dcdc;
 
   scroll-behavior: smooth;
 }
@@ -28,11 +33,11 @@ html {
 
 #logo {
   font-size: 30px;
-  color: var(--title-color);
+  color: var(--title-color-nav);
 }
 
 #bibliotech-title {
-  color: var(--title-color);
+  color: var(--title-color-nav);
   position: absolute;
   bottom: -2px;
   font-size: 30px;
@@ -47,7 +52,7 @@ html {
 
 #search-form {
   margin: 0 auto;
-  background: var(--title-color);
+  background: var(--title-color-nav);
   border-radius: 5px;
   width: 50%;
   margin-left: 180px;
@@ -69,13 +74,12 @@ html {
 }
 
 .navbar .nav-item .nav-link {
-  color: var(--title-color);
+  color: var(--title-color-nav);
   transition: 0.5s;
 }
 
-.navbar .nav-item .nav-link:hover,
-#bibliotech-title:hover {
-  color: var(--hover-color);
+.navbar .nav-item .nav-link:hover {
+  color: var(--hover-color-3);
 }
 
 .bold {
@@ -192,7 +196,7 @@ html {
 }
 
 .page-description {
-  color: var(--hover-color);
+  color: var(--hover-color-2);
 }
 
 #bio,
@@ -269,24 +273,24 @@ html {
 }
 
 .fas.fa-star {
-  color: var(--principal-color);
+  color: #ffff00;
 }
 
 .rating {
-  color: var(--help-color);
+  color: var(--title-color);
 }
 
 .rate-btn {
   margin-bottom: 15px;
   color: var(--btn-color);
-  background-color: var(--hover-color-2);
+  background-color: var(--hate-btn);
   border-color: var(--hover-color-2);
   width: 100%;
   font-weight: bold;
 }
 
 .rate-btn:hover {
-  background-color: var(--hover-color-3);
+  background-color: var(--btn-color);
   border-color: var(--hover-color-3);
 }
 
@@ -377,7 +381,8 @@ html {
 }
 
 #review-form-container {
-  background-color: var(--hover-color-2);
+  background-color: var(--help-color);
+  border-radius: 2rem;
   padding: 20px;
 }
 

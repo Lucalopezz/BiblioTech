@@ -21,7 +21,7 @@ $userReviws = $reviewDAO->getReviewsByUser($userData->id);
     <h2 class="section-title">Minhas Críticas</h2>
     <p class="section-desciption">Veja e edite suas críticas:</p>
     <div class="col-md-12" id="reviews-dashboard">
-        <table class="table table-dark">
+        <table class="table table-bordered">
             <thead>
                 <th scope="col">Texto</th>
                 <th scope="col">Nota</th>
@@ -38,13 +38,16 @@ $userReviws = $reviewDAO->getReviewsByUser($userData->id);
                         <td><i class="fas fa-star"></i>
                             <?= $review['rating'] ?>
                         </td>
-                        <td class="actions-column">
-                            <a class="edit-btn" href="<?= $BASE_URL ?>editreview.php?id=<?= $review['id'] ?> " ><i
-                                    class="far fa-edit"></i>Editar</a>
+                        <td class="actions-column mx-5">
+                            
+                            <a class="text-dark edit-btn " href="<?= $BASE_URL ?>editreview.php?id=<?= $review['id'] ?> ">
+                                <i class="far fa-edit"></i>
+                            </a>
+                    
                             <form action="<?= $BASE_URL ?>review_process.php" method="post">
                                 <input type="hidden" name="type" value="delete">
                                 <input type="hidden" name="id" value="<?= $review['id'] ?>">
-                                <button type="submit" class="delete-btn"><i class="fas fa-times"></i>Deletar</button>
+                                <button type="submit" class="delete-btn"><i class="fas fa-times"></i></button>
                             </form>
                         </td>
                     </tr>
