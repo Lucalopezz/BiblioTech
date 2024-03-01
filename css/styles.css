@@ -1,12 +1,12 @@
 html {
-  --title-color: #0C0C0C;
+  --title-color: #0c0c0c;
   --title-color-nav: #fff;
-  --navbar-color:#4885e0;
+  --navbar-color: #4885e0;
   --hover-color: #999;
   --hover-color-2: #333;
   --hover-color-3: #444;
   --background-color: #f6f1f1;
-  --principal-color: #0143A5;
+  --principal-color: #0143a5;
   --help-color: #ccc;
   --book-card-color: #e4e4e4;
   --btn-color: #5799ef;
@@ -18,8 +18,6 @@ html {
   --mesage-success-color: #0f5132;
   --mesage-success-color-bg: #d1e7dd;
   --mesage-success-color-border: #badbcc;
-
-
 
   --hate-btn: #e3dcdc;
 
@@ -118,7 +116,7 @@ html {
 }
 
 #social-container li:hover {
-  background-color: var(--hover-color-2);
+  background-color: var(--principal-color);
 }
 
 #social-container li a,
@@ -338,15 +336,15 @@ html {
   justify-content: center;
 }
 .pagination a {
-  color: #fff;
-  border: 1px solid #fff;
+  color: var(--title-color);
+  border: 1px solid var(--btn-color);
   padding: 5px 10px;
   margin-right: 5px;
   text-decoration: none;
 }
 
 .pagination a.active {
-  background-color: #fff;
+  background-color: var(--navbar-color);
   color: #000;
 }
 
@@ -579,4 +577,49 @@ html {
   color: var(--mesage-success-color);
   background-color: var(--mesage-success-color-bg);
   border-color: var(--mesage-success-color-border);
+}
+/* Css mobile */
+@media only screen and (max-width: 768px) {
+  #search-form {
+    width: 90%;
+    margin: 10px 0; /* Adapte a margem conforme necessário */
+  }
+  #logo {
+    display: none;
+  }
+  #search-form .form-control {
+    width: 20%;
+  }
+  .book-card {
+    min-width: 20rem;
+  }
+ 
+}
+
+/* Estilo adicional para melhorar a apresentação em telas menores */
+@media only screen and (max-width: 576px) {
+  .book-card {
+    min-width: 20rem;
+  }
+  #bibliotech-title {
+    font-size: 1.5rem;
+  }
+  #logo {
+    display: none;
+  }
+}
+
+/* Remover a quebra de linha causada pelo ícone e texto no navbar-brand */
+.navbar-brand {
+  white-space: nowrap;
+}
+
+/* Estilizar o ícone do menu para torná-lo mais visível */
+.navbar-toggler {
+  border: 1px solid #fff;
+}
+
+/* Adicionar preenchimento aos itens de navegação para melhor espaçamento */
+.navbar-nav .nav-link {
+  padding: 10px;
 }

@@ -28,7 +28,7 @@ require_once("globals.php");
            
         </ul>
     </div>
-    <p>&copy; 2024 Lucas Dalossa Lopes   <img class="ml-5" alt="php" src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" /></p>
+    <p>&copy; 2024   <img class="ml-5" alt="php" src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" /></p>
     
 
 </footer>

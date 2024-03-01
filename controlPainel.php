@@ -38,7 +38,7 @@ $categories = $bookDAO->FindCategory();
     </div>
     <!--Tabela de livros -->
     <div class="col-md-12 " id="books-dashboard">
-        <table class="table table-dark">
+        <table class="table table-bordered">
             <thead> <!-- cabeçalho da tabela -->
                 <th scope="col">#</th>
                 <th scope="col">Título</th>
@@ -84,7 +84,7 @@ $categories = $bookDAO->FindCategory();
     </p>
     <!--Tabela de categorias -->
     <div class="col-md-12 " id="books-dashboard">
-        <table class="table table-dark">
+        <table class="table table-bordered">
             <thead> 
                 <th scope="col">#</th>
                 <th scope="col">Categorias</th>
