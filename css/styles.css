@@ -596,30 +596,95 @@ html {
  
 }
 
-/* Estilo adicional para melhorar a apresentação em telas menores */
-@media only screen and (max-width: 576px) {
+/* Responsivo */
+@media(max-width: 450px) {
+
+  #main-container {
+    padding: 20px;
+  }
+  #search-form {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #search-form .form-control {
+    width: 85%;
+  }
+ .navbar-brand{
+  padding-top: 2rem;
+ }
+
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .books-container {
+    padding: 0 15px;
+  }
+
   .book-card {
-    min-width: 20rem;
+    width: 100%;
   }
-  #bibliotech-title {
-    font-size: 1.5rem;
+
+  .book-details {
+    display: flex;
+    flex-direction: column;
   }
-  #logo {
+
+  .book-details span {
+    padding-bottom: 8px;
+  }
+
+  .pipe {
     display: none;
   }
-}
 
-/* Remover a quebra de linha causada pelo ícone e texto no navbar-brand */
-.navbar-brand {
-  white-space: nowrap;
-}
 
-/* Estilizar o ícone do menu para torná-lo mais visível */
-.navbar-toggler {
-  border: 1px solid #fff;
-}
+  #reviews-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-/* Adicionar preenchimento aos itens de navegação para melhor espaçamento */
-.navbar-nav .nav-link {
-  padding: 10px;
+  #review-form-container select,
+  #review-form-container textarea {
+    width: 100%;
+  }
+
+  .empty-list {
+    margin-top: 20px;
+  }
+
+  .msg {
+    width: 100%;
+  }
+
+  /* Movie */
+  .review {
+    padding: 0 15px;
+  }
+
+  /* Dashboard */
+  #movies-dashboard {
+    padding: 0;
+  }
+
+  .actions-column {
+    width: 140px;
+  }
+
+  .edit-btn {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  /* Edit movie */
+  .book-image-container {
+    margin-top: 1rem;
+  }
+
+  .fas.fa-bars {
+    color: #F5C518;
+  }
+
 }

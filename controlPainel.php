@@ -60,11 +60,11 @@ $categories = $bookDAO->FindCategory();
                         </td>
                         <td class="actions-column">
                             <a href="<?= $BASE_URL ?>editbook.php?id=<?= $book->id ?>" class="edit-btn"><i
-                                    class="far fa-edit"></i>Editar</a>
+                                    class="far fa-edit"></i></a>
                             <form action="<?= $BASE_URL ?>book_process.php" method="post">
                                 <input type="hidden" name="type" value="delete">
                                 <input type="hidden" name="id" value="<?= $book->id ?>">
-                                <button type="submit" class="delete-btn"><i class="fas fa-times"></i>Deletar</button>
+                                <button type="submit" class="delete-btn"><i class="fas fa-times"></i></button>
                             </form>
                         </td>
                     </tr>
@@ -105,7 +105,7 @@ $categories = $bookDAO->FindCategory();
                             <form action="<?= $BASE_URL ?>book_process.php" method="post">
                                 <input type="hidden" name="type" value="delete_category">
                                 <input type="hidden" name="id" value="<?= $category['id'] ?>">
-                                <button type="submit" class="delete-btn"><i class="fas fa-times"></i>Deletar</button>
+                                <button type="submit" class="delete-btn"><i class="fas fa-times"></i></button>
                             </form>
                         </td>
                     </tr>

@@ -55,6 +55,10 @@ $bookReviews = $reviewDAO->getBooksReview($id);
                 <span><i class="fas fa-star"></i>
                     <?= $book->rating ?>
                 </span>
+                <span class="pipe"></span>
+                <span><i class="fa-solid fa-box"></i>
+                     <?= $book->quant ?>
+                </span>
             </p>
 
             <div class="book-image-container"
