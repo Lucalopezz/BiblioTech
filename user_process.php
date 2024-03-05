@@ -5,6 +5,8 @@ require_once("dao/UserDAO.php");
 require_once("globals.php");
 require_once("db.php");
 
+require("helpers/xssFunc.php");
+
 $message = new Message($BASE_URL);
 $userDAO = new UserDAO($conn, $BASE_URL);
 
@@ -25,10 +27,10 @@ if ($type === "update") {
 
   $user = new User();
 
-  $userData->name = $name;
-  $userData->lastname = $lastname;
-  $userData->email = $email;
-  $userData->bio = $bio;
+  $userData->name = xssProtect($name);
+  $userData->lastname = xssProtect($lastname);
+  $userData->email = xssProtect($email);
+  $userData->bio = xssProtect($bio);
   $userData->gender = $gender;
 
   $userDAO->update($userData);
@@ -36,6 +38,11 @@ if ($type === "update") {
 } elseif ($type === "changepassword") {
   $password = filter_input(INPUT_POST, "password");
   $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+
+  if (!$password || !$confirmpassword) {
+    $message->setMessage("Preencha os dados!", "error", "editprofile");
+    return;
+  }
 
   $userData = $userDAO->verifyToken();
   $id = $userData->id;
@@ -57,5 +64,5 @@ if ($type === "update") {
 
 
 } else {
-  $message->setMessage("Informações Inválidas", "error", "index.php");
+  $message->setMessage("Informações Inválidas", "error", "index");
 }

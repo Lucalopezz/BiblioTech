@@ -3,13 +3,15 @@ require_once("templates/header.php");
 require_once("dao/UserDAO.php");
 require_once("models/Users.php");
 
+require("helpers/xssFunc.php");
+
 $userDAO = new UserDAO($conn, $BASE_URL);
 
 $userData = $userDAO->verifyToken(True);
 
 $user = new User();
 
-$fullName = $user->getFullName($userData);
+$fullName = xssProtect($user->getFullName($userData));
 
 if ($userData->gender == "Feminino") {
     $image = "/img/users/mulher_icon.png";
@@ -19,6 +21,11 @@ if ($userData->gender == "Feminino") {
     $image = "/img/users/user.png";
 }
 
+$name = xssProtect($userData->name);
+$lastName = xssProtect($userData->lastname);
+$email = xssProtect($userData->email);
+$bio = xssProtect($userData->bio);
+
 ?>
 <div id="main-container" class="container-fluid">
     <div class="col-md-12">
@@ -27,7 +34,9 @@ if ($userData->gender == "Feminino") {
             <div class="row">
                 <div class="col-md-4">
                     <h1>
-                        <a id="name-edit" href="<?=$BASE_URL?>profile.php?id=<?=$userData->id?>"><?= $fullName ?></a>
+                        <a id="name-edit" href="<?= $BASE_URL ?>profile?id=<?= $userData->id ?>">
+                            <?= $fullName ?>
+                        </a>
                     </h1>
                     <p class="page-description">
                         Altere seus dados no formulário abaixo:
@@ -35,19 +44,19 @@ if ($userData->gender == "Feminino") {
                     <div class="form-group">
                         <label for="name">Nome:</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Digite o seu nome"
-                            value="<?= $userData->name ?>">
+                            value="<?= $name ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="lastname">Sobrenome:</label>
                         <input type="text" class="form-control" id="lastname" name="lastname"
-                            placeholder="Digite o seu sobrenome" value="<?= $userData->lastname ?>">
+                            placeholder="Digite o seu sobrenome" value="<?= $lastName ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email:</label>
                         <input type="text" readonly class="form-control disabled" id="email" name="email"
-                            placeholder="Digite o seu email" value="<?= $userData->email ?>">
+                            placeholder="Digite o seu email" value="<?= $email ?>">
                     </div>
                     <input type="submit" class="btn card-btn" value="Alterar">
                 </div>
@@ -58,7 +67,7 @@ if ($userData->gender == "Feminino") {
                         <label for="bio">Seu Gênero:</label>
                         <select class="form-control" name="gender" id="gender">
                             <option>Selecione</option>
-                            
+
                             <option value="Masculino" <?= $userData->gender == "Masculino" ? "selected" : "" ?>>
                                 Masculino
                             </option>
@@ -74,7 +83,7 @@ if ($userData->gender == "Feminino") {
                     <div class="form-group photo-edit">
                         <label for="bio">Sobre você:</label>
                         <textarea class="form-control" name="bio" id="bio" rows="5"
-                            placeholder="Conte quem você é, quais livros você gosta..."><?= $userData->bio ?></textarea>
+                            placeholder="Conte quem você é, quais livros você gosta..."><?= $bio ?></textarea>
                     </div>
                 </div>
             </div>

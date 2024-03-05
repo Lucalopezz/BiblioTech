@@ -13,7 +13,7 @@ html {
   --btn-color-2: #0dcaf0;
   --btn-color-3: #dc3545;
   --mesage-error-color: #842029;
-  --mesage-error-color-bg: #f8d7da;
+  --mesage-error-color-bg: #c46068;
   --mesage-error-color-border: #f5c2c7;
   --mesage-success-color: #0f5132;
   --mesage-success-color-bg: #d1e7dd;
@@ -582,7 +582,7 @@ html {
 @media only screen and (max-width: 768px) {
   #search-form {
     width: 90%;
-    margin: 10px 0; /* Adapte a margem conforme necessário */
+    margin: 10px 0;
   }
   #logo {
     display: none;
