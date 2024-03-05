@@ -20,5 +20,11 @@ O desenvolvimento deste site é realizado utilizando as seguintes linguagens de 
 
 - **HTML e CSS**: Fundamentais para a estruturação e estilização do site, garantindo uma apresentação visualmente atraente e responsiva.
 
+# Checklist de Objetivos
 
+- [ ] **Arrumar cor das mensagens**
+
+- [X] **Segurança xss**
+      
+- [ ] **Segurança ssl**
 
