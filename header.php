@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
+
 require_once("globals.php");
 require_once("db.php");
 require_once("models/Message.php");
@@ -16,7 +18,6 @@ $userDao = new UserDAO($conn, $BASE_URL);
 
 $userData = $userDao->verifyToken(false);
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,7 @@ $userData = $userDao->verifyToken(false);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BiblioTech</title>
-    <link rel="shortcut icon" href="<?= $BASE_URL ?>img/bibliotechicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= $BASE_URL ?>img/bibliotech.png" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css"
         integrity="sha512-drnvWxqfgcU6sLzAJttJv7LKdjWn0nxWCSbEAtxJ/YYaZMyoNLovG7lPqZRdhgL1gAUfa+V7tbin8y+2llC1cw=="

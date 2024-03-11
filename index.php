@@ -91,7 +91,7 @@ $AllBooks = $bookDAO->getAllBooks();
             <p class="empty-list">Não há livros cadastrados</p>
         <?php endif; ?>
         <?php if (count($AllBooks) >= 10): ?>
-            <a class="read-more " href="<?= $BASE_URL ?>allBooks.php">Ver Mais</a>
+            <a class="read-more btn card-btn" href="<?= $BASE_URL ?>allBooks.php">Ver Mais</a>
         <?php endif; ?>
     </div>
 
