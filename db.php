@@ -1,9 +1,9 @@
 <?php
 
-$db_name = 'bibliotech';
-$db_host = 'mysql.bibliotech.app.br';
-$db_user = 'bibliotech';
-$db_pass = 'lol040989';
+$db_name = '';
+$db_host = '';
+$db_user = '';
+$db_pass = '';
 
 $conn = new PDO("mysql:dbname=" . $db_name . ";host=" . $db_host, $db_user, $db_pass);
 
