@@ -1,9 +1,9 @@
 <?php
 
-require_once("models/Review.php");
-require_once("models/Message.php");
+require_once ("models/Review.php");
+require_once ("models/Message.php");
 
-require_once("dao/UserDAO.php");
+require_once ("dao/UserDAO.php");
 
 class ReviewDAO implements ReviewDAOInterface
 {
@@ -52,7 +52,8 @@ class ReviewDAO implements ReviewDAOInterface
         // Redireciona e apresenta mensagem de sucesso
         $this->message->setMessage("Crítica feita com sucesso!", "success", "back");
     }
-    public function update(Review $review){
+    public function update(Review $review)
+    {
         $stmt = $this->conn->prepare("UPDATE reviews SET rating = :rating, review = :review WHERE id = :id");
 
         $stmt->bindParam(":rating", $review->rating);
@@ -61,7 +62,7 @@ class ReviewDAO implements ReviewDAOInterface
 
         $stmt->execute();
 
-        $this->message->setMessage("Comentário editado!", "success", "dashboard.php");
+        $this->message->setMessage("Comentário editado!", "success", "dashboard");
     }
     public function getBooksReview($id)
     {
@@ -73,7 +74,7 @@ class ReviewDAO implements ReviewDAOInterface
         if ($stmt->rowCount() > 0) {
             $reviewsData = $stmt->fetchAll();
             $userDAO = new UserDAO($this->conn, $this->url);
-            foreach($reviewsData as $review){
+            foreach ($reviewsData as $review) {
 
                 $reviewObject = $this->buildReview($review);
 
@@ -82,13 +83,14 @@ class ReviewDAO implements ReviewDAOInterface
 
                 $reviewObject->user = $user;
 
-                $reviews[] = $reviewObject ;
+                $reviews[] = $reviewObject;
             }
 
-        } 
+        }
         return $reviews;
     }
-    public function getReviewsByUser($id){
+    public function getReviewsByUser($id)
+    {
         $reviews = [];
         $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE users_id = :users_id");
 
@@ -97,15 +99,16 @@ class ReviewDAO implements ReviewDAOInterface
         if ($stmt->rowCount() > 0) {
             $reviewsData = $stmt->fetchAll();
 
-            foreach($reviewsData as $review){
+            foreach ($reviewsData as $review) {
 
-                $reviews[] = $review ;
+                $reviews[] = $review;
             }
 
-        } 
+        }
         return $reviews;
     }
-    public function findById($id){
+    public function findById($id)
+    {
         $review = [];
 
         // Consulta para obter dados básicos do livro
@@ -129,9 +132,9 @@ class ReviewDAO implements ReviewDAOInterface
         $stmt->bindParam(":books_id", $id);
         $stmt->bindParam(":users_id", $userId);
         $stmt->execute();
-        if($stmt->rowCount() > 0){
+        if ($stmt->rowCount() > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -140,37 +143,38 @@ class ReviewDAO implements ReviewDAOInterface
         $stmt = $this->conn->prepare("SELECT * FROM reviews WHERE books_id = :books_id");
 
         $stmt->bindParam(":books_id", $id);
-  
-        $stmt->execute();
-  
-        if($stmt->rowCount() > 0) {
-  
-          $rating = 0;
-  
-          $reviews = $stmt->fetchAll();
-  
-          foreach($reviews as $review) {
-            $rating += $review["rating"];
-          }
-  
-          $rating = $rating / count($reviews);
-          $rating = number_format($rating, 1);
-          
-  
-        } else {
-  
-          $rating = "Não avaliado";
-  
-        }
-  
-        return $rating;  
-    }
-    public function destroy($id){
-         $stmt = $this->conn->prepare("DELETE FROM reviews WHERE id = :id");
-         $stmt->bindParam(":id", $id);
-         $stmt->execute();
 
-        $this->message->setMessage("Review deletado com sucesso!", "success", "dashboard.php");
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+
+            $rating = 0;
+
+            $reviews = $stmt->fetchAll();
+
+            foreach ($reviews as $review) {
+                $rating += $review["rating"];
+            }
+
+            $rating = $rating / count($reviews);
+            $rating = number_format($rating, 1);
+
+
+        } else {
+
+            $rating = "Não avaliado";
+
+        }
+
+        return $rating;
+    }
+    public function destroy($id)
+    {
+        $stmt = $this->conn->prepare("DELETE FROM reviews WHERE id = :id");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+
+        $this->message->setMessage("Review deletado com sucesso!", "success", "dashboard");
 
     }
 

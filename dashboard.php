@@ -1,10 +1,10 @@
 <?php
-require_once("templates/header.php");
+require_once ("templates/header.php");
 
-require_once("dao/UserDAO.php");
-require_once("models/Users.php");
-require_once("dao/BookDAO.php");
-require_once("dao/ReviewDAO.php");
+require_once ("dao/UserDAO.php");
+require_once ("models/Users.php");
+require_once ("dao/BookDAO.php");
+require_once ("dao/ReviewDAO.php");
 
 
 $userDAO = new UserDAO($conn, $BASE_URL);
@@ -31,7 +31,7 @@ $userReviws = $reviewDAO->getReviewsByUser($userData->id);
             <tbody>
                 <?php foreach ($userReviws as $review): ?>
                     <tr>
-                        <td><a href="<?= $BASE_URL ?>book.php?id=<?= $review['books_id'] ?>" class="table-book-title">
+                        <td><a href="<?= $BASE_URL ?>book?id=<?= $review['books_id'] ?>" class="table-book-title">
                                 <?= $review['review'] ?>
                             </a></td>
 
@@ -39,12 +39,12 @@ $userReviws = $reviewDAO->getReviewsByUser($userData->id);
                             <?= $review['rating'] ?>
                         </td>
                         <td class="actions-column mx-5">
-                            
-                            <a class="text-dark edit-btn " href="<?= $BASE_URL ?>editreview.php?id=<?= $review['id'] ?> ">
+
+                            <a class="text-dark edit-btn " href="<?= $BASE_URL ?>editreview?id=<?= $review['id'] ?> ">
                                 <i class="far fa-edit"></i>
                             </a>
-                    
-                            <form action="<?= $BASE_URL ?>review_process.php" method="post">
+
+                            <form action="<?= $BASE_URL ?>review_process" method="post">
                                 <input type="hidden" name="type" value="delete">
                                 <input type="hidden" name="id" value="<?= $review['id'] ?>">
                                 <button type="submit" class="delete-btn"><i class="fas fa-times"></i></button>
@@ -61,5 +61,5 @@ $userReviws = $reviewDAO->getReviewsByUser($userData->id);
 
 
 <?php
-require_once("templates/footer.php");
+require_once ("templates/footer.php");
 ?>

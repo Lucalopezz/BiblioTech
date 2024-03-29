@@ -1,11 +1,11 @@
 <?php
-require_once("models/Users.php");
-require_once("models/Message.php");
-require_once("dao/UserDAO.php");
-require_once("globals.php");
-require_once("db.php");
+require_once ("models/Users.php");
+require_once ("models/Message.php");
+require_once ("dao/UserDAO.php");
+require_once ("globals.php");
+require_once ("db.php");
 
-require("helpers/xssFunc.php");
+require ("helpers/xssFunc.php");
 
 $message = new Message($BASE_URL);
 $userDAO = new UserDAO($conn, $BASE_URL);

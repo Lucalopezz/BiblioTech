@@ -1,12 +1,12 @@
 <?php
-require_once("templates/header.php");
+require_once ("templates/header.php");
 ?>
 <div id="main-container" class="container-fluid">
     <div class="col-md-12">
         <div class="row" id="auth-row">
             <div class="col-md-4" id="login-container">
                 <h2>Entrar</h2>
-                <form action="<?= $BASE_URL ?>auth_process.php" method="post">
+                <form action="<?= $BASE_URL ?>auth_process" method="post">
                     <input type="hidden" value="login" name="type">
                     <div class="form-group">
                         <label for="email">E-mail:</label>
@@ -24,7 +24,7 @@ require_once("templates/header.php");
             </div>
             <div class="col-md-4" id="register-container">
                 <h2>Criar Conta</h2>
-                <form action="<?= $BASE_URL ?>auth_process.php" method="post">
+                <form action="<?= $BASE_URL ?>auth_process" method="post">
                     <input type="hidden" value="register" name="type">
                     <div class="form-group">
                         <label for="email">E-mail:</label>
@@ -63,5 +63,5 @@ require_once("templates/header.php");
 
 
 <?php
-require_once("templates/footer.php");
+require_once ("templates/footer.php");
 ?>

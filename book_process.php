@@ -1,11 +1,11 @@
 <?php
 
-require_once("models/Book.php");
-require_once("models/Message.php");
-require_once("dao/AdmDAO.php");
-require_once("dao/BookDAO.php");
-require_once("globals.php");
-require_once("db.php");
+require_once ("models/Book.php");
+require_once ("models/Message.php");
+require_once ("dao/AdmDAO.php");
+require_once ("dao/BookDAO.php");
+require_once ("globals.php");
+require_once ("db.php");
 
 $message = new Message($BASE_URL);
 $admDAO = new AdmUserDAO($conn, $BASE_URL);
@@ -20,6 +20,7 @@ $admData = $admDAO->verifyTokenAdm();
 if ($type == "create") {
     // Obter dados do formulário
     $title = filter_input(INPUT_POST, "title");
+    $author = filter_input(INPUT_POST, "author");
     $description = filter_input(INPUT_POST, "description");
     $pages = filter_input(INPUT_POST, "pages");
     $category = filter_input(INPUT_POST, "category");
@@ -29,13 +30,14 @@ if ($type == "create") {
     if ($title !== null && $quant !== null) {
         $book = new Book();
         $book->title = $title;
+        $book->author = $author;
         $book->description = $description;
         $book->category = $category;
         $book->pages = $pages;
         $book->quant = $quant;
 
         // Processar a imagem, se presente
-        if (isset($_FILES['image']) && !empty($_FILES['image']['tmp_name'])) {
+        if (isset ($_FILES['image']) && !empty ($_FILES['image']['tmp_name'])) {
             $image = $_FILES['image'];
             $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
 
@@ -64,11 +66,12 @@ if ($type == "create") {
         $bookDAO->destroy($book->id);
 
     } else {
-        $message->setMessage("Informações Inválidas", "error", "index.php");
+        $message->setMessage("Informações Inválidas", "error", "index");
     }
 
 } else if ($type == "update") {
     $title = filter_input(INPUT_POST, "title");
+    $author = filter_input(INPUT_POST, "author");
     $description = filter_input(INPUT_POST, "description");
     $pages = filter_input(INPUT_POST, "pages");
     $category = filter_input(INPUT_POST, "category");
@@ -79,21 +82,21 @@ if ($type == "create") {
     $bookData = $bookDAO->findById($id);
 
     if ($bookData) {
-        if (!empty($title) && !empty($quant)) {
+        if (!empty ($title) && !empty ($quant)) {
             $bookData->title = $title;
+            $bookData->author = $author;
             $bookData->description = $description;
             $bookData->category = $category;
             $bookData->pages = $pages;
             $bookData->quant = $quant;
 
-            if (isset($_FILES['image']) && !empty($_FILES['image']['tmp_name'])) {
+            if (isset ($_FILES['image']) && !empty ($_FILES['image']['tmp_name'])) {
                 $image = $_FILES['image'];
                 $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
                 $jpgArray = ["image/jpg", "image/jpeg"];
 
                 // Checagem de tipo de imagem
                 if (in_array($image["type"], $imageTypes)) {
-
                     // Checar se jpg
                     if (in_array($image['type'], $jpgArray)) {
 
@@ -105,6 +108,7 @@ if ($type == "create") {
                         $imageFile = imagecreatefrompng($image["tmp_name"]);
 
                     }
+                    $book = new Book();
                     $imageName = $book->imageGenerateName();
 
                     imagejpeg($imageFile, "./img/books/" . $imageName, 100);
@@ -116,7 +120,7 @@ if ($type == "create") {
 
                 }
             }
-           
+
             $bookDAO->update($bookData);
 
 
@@ -125,30 +129,30 @@ if ($type == "create") {
 
         }
     } else {
-        $message->setMessage("Informações erradas, livro não existe!", "error", "controlPainel.php");
+        $message->setMessage("Informações erradas, livro não existe!", "error", "controlPainel");
 
     }
 
 
-}else if ($type == "create_category") {
+} else if ($type == "create_category") {
     $name = filter_input(INPUT_POST, "name");
 
-    if (!empty($name)) {
+    if (!empty ($name)) {
         $categoryName = $name;
 
         $bookDAO->createCategory($categoryName);
     }
-}else if ($type == "delete_category"){
+} else if ($type == "delete_category") {
     $id = filter_input(INPUT_POST, "id");
 
-    if($id){
+    if ($id) {
         $bookDAO->destroyCategory($id);
-    }else {
-        $message->setMessage("Informações Inválidas", "error", "index.php");
+    } else {
+        $message->setMessage("Informações Inválidas", "error", "index");
     }
 
-}else {
-    $message->setMessage("Informações erradas!", "error", "index.php");
+} else {
+    $message->setMessage("Informações erradas!", "error", "index");
 
 }
 

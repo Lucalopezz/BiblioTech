@@ -1,8 +1,8 @@
 <?php
-require_once("models/Book.php");
-require_once("models/Message.php");
+require_once ("models/Book.php");
+require_once ("models/Message.php");
 
-require_once("dao/ReviewDAO.php");
+require_once ("dao/ReviewDAO.php");
 
 
 class BookDAO implements BookDAOInterface
@@ -23,10 +23,11 @@ class BookDAO implements BookDAOInterface
         $book = new Book();
         $book->id = $data['id'];
         $book->title = $data['title'];
+        $book->author = $data['author'];
         $book->description = $data['description'];
         $book->image = $data['image'];
         $book->quant = $data['quant'];
-        $book->category = isset($data['category']) ? $data['category'] : null;
+        $book->category = isset ($data['category']) ? $data['category'] : null;
         $book->pages = $data['pages'];
 
 
@@ -90,9 +91,9 @@ class BookDAO implements BookDAOInterface
         $stmt = $this->conn->prepare("SELECT * FROM books LIMIT :limit OFFSET :offset");
         $stmt->bindParam(":limit", $livrosPorPagina, PDO::PARAM_INT);
         $stmt->bindParam(":offset", $offset, PDO::PARAM_INT);
-        
+
         $stmt->execute();
-        
+
         $books = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $books;
     }
@@ -149,7 +150,7 @@ class BookDAO implements BookDAOInterface
     public function findByTitle($title)
     {
         if ($title == "") {
-            $this->message->setMessage("", "", "index.php");
+            $this->message->setMessage("", "", "index");
 
         } else {
             $books = [];
@@ -182,12 +183,13 @@ class BookDAO implements BookDAOInterface
     {
         // Insere o livro na tabela 'books'
         $stmt = $this->conn->prepare("INSERT INTO books (
-            title, description, image, quant, pages
+            title, author, description, image, quant, pages
           ) VALUES (
-            :title, :description, :image, :quant, :pages
+            :title, :author, :description, :image, :quant, :pages
           )");
 
         $stmt->bindParam(":title", $book->title);
+        $stmt->bindParam(":author", $book->author);
         $stmt->bindParam(":description", $book->description);
         $stmt->bindParam(":image", $book->image);
         $stmt->bindParam(":quant", $book->quant);
@@ -207,7 +209,7 @@ class BookDAO implements BookDAOInterface
 
 
         // Redireciona e apresenta mensagem de sucesso
-        $this->message->setMessage("Livro adicionado!", "success", "controlPainel.php");
+        $this->message->setMessage("Livro adicionado!", "success", "controlPainel");
     }
 
 
@@ -233,7 +235,7 @@ class BookDAO implements BookDAOInterface
 
         $stmt->execute();
 
-        $this->message->setMessage("Categoria adicionada!", "success", "controlPainel.php");
+        $this->message->setMessage("Categoria adicionada!", "success", "controlPainel");
 
     }
     public function destroyCategory($id)
@@ -243,15 +245,16 @@ class BookDAO implements BookDAOInterface
         $stmt->execute();
 
 
-        $this->message->setMessage("Categoria deletado com sucesso!", "success", "controlPainel.php");
+        $this->message->setMessage("Categoria deletado com sucesso!", "success", "controlPainel");
 
     }
 
     public function update(Book $book)
     {
-        $stmt = $this->conn->prepare("UPDATE books SET title = :title, description = :description, image = :image, quant = :quant, pages = :pages WHERE id = :id");
+        $stmt = $this->conn->prepare("UPDATE books SET title = :title, author = :author, description = :description, image = :image, quant = :quant, pages = :pages WHERE id = :id");
 
         $stmt->bindParam(":title", $book->title);
+        $stmt->bindParam(":author", $book->author);
         $stmt->bindParam(":description", $book->description);
         $stmt->bindParam(":image", $book->image);
         $stmt->bindParam(":quant", $book->quant);
@@ -270,7 +273,7 @@ class BookDAO implements BookDAOInterface
 
         $stmt2->execute();
 
-        $this->message->setMessage("Livro editado!", "success", "controlPainel.php");
+        $this->message->setMessage("Livro editado!", "success", "controlPainel");
 
     }
     public function destroy($id)
@@ -300,6 +303,6 @@ class BookDAO implements BookDAOInterface
         $stmt2->bindParam(":id", $id);
         $stmt2->execute();
 
-        $this->message->setMessage("Livro deletado com sucesso!", "success", "controlPainel.php");
+        $this->message->setMessage("Livro deletado com sucesso!", "success", "controlPainel");
     }
 }

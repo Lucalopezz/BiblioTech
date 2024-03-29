@@ -1,10 +1,10 @@
 <?php
 
-require_once("models/Users.php");
-require_once("models/Message.php");
-require_once("dao/UserDAO.php");
-require_once("globals.php");
-require_once("db.php");
+require_once ("models/Users.php");
+require_once ("models/Message.php");
+require_once ("dao/UserDAO.php");
+require_once ("globals.php");
+require_once ("db.php");
 
 $message = new Message($BASE_URL);
 $userDAO = new UserDAO($conn, $BASE_URL);
@@ -63,12 +63,12 @@ if ($type === "register") {
 
     //Tenta Autenticar Usuario
     if ($userDAO->authenticateUser($email, $password)) {
-        $message->setMessage("Seja bem-vindo!", "success", "editprofile.php");
+        $message->setMessage("Seja bem-vindo!", "success", "editprofile");
 
     } else {
         $message->setMessage("Usuário ou senha incorretos", "error", "back");
 
     }
 } else {
-    $message->setMessage("Informações Inválidas", "error", "index.php");
+    $message->setMessage("Informações Inválidas", "error", "index");
 }

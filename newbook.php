@@ -1,12 +1,12 @@
 <?php
 
-require_once("models/Adm.php");
-require_once("dao/AdmDAO.php");
-require_once("dao/BookDAO.php");
-require_once("globals.php");
-require_once("models/Message.php");
-require_once("db.php");
-require_once("templates/headerAdm.php");
+require_once ("models/Adm.php");
+require_once ("dao/AdmDAO.php");
+require_once ("dao/BookDAO.php");
+require_once ("globals.php");
+require_once ("models/Message.php");
+require_once ("db.php");
+require_once ("templates/headerAdm.php");
 
 $bookDAO = new BookDAO($conn, $BASE_URL);
 
@@ -41,6 +41,12 @@ $categories = $bookDAO->FindCategory();
             </div>
 
             <div class="form-group">
+                <label for="title">Autor:</label>
+                <input type="text" class="form-control" id="author" placeholder="Digite o altor do seu Livro"
+                    name="author" >
+            </div>
+
+            <div class="form-group">
                 <label for="pages">Páginas:</label>
                 <input type="text" class="form-control" id="pages" placeholder="Digite o Número de Páginas do seu Livro"
                     name="pages">
@@ -49,7 +55,7 @@ $categories = $bookDAO->FindCategory();
             <div class="form-group">
                 <label for="category">Categoria:</label>
                 <select name="category" id="category" class="form-control">
-                <option value="">Selecione</option>
+                    <option value="">Selecione</option>
                     <?php foreach ($categories as $category): ?>
                         <option value="<?= $category['id'] ?>">
                             <?= $category['name'] ?>
@@ -79,5 +85,5 @@ $categories = $bookDAO->FindCategory();
 
 
 <?php
-require_once("templates/footer.php");
+require_once ("templates/footer.php");
 ?>

@@ -1,5 +1,5 @@
 <?php
-require_once("globals.php");
+require_once ("globals.php");
 ?>
 
 <footer id="footer">
@@ -24,12 +24,13 @@ require_once("globals.php");
             <li>
                 <a href="<?= $BASE_URL ?>">Entrar em Contato</a>
             </li>
-          
-           
+
+
         </ul>
     </div>
-    <p>&copy; 2024   <img class="ml-5" alt="php" src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" /></p>
-    
+    <p>&copy; 2024 <img class="ml-5" alt="php"
+            src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" /></p>
+
 
 </footer>
 

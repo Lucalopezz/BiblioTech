@@ -1,10 +1,10 @@
 <?php
-require_once("models/Adm.php");
-require_once("dao/AdmDAO.php");
-require_once("dao/BookDAO.php");
-require_once("globals.php");
-require_once("models/Message.php");
-require_once("db.php");
+require_once ("models/Adm.php");
+require_once ("dao/AdmDAO.php");
+require_once ("dao/BookDAO.php");
+require_once ("globals.php");
+require_once ("models/Message.php");
+require_once ("db.php");
 
 
 
@@ -15,7 +15,7 @@ $bookDAO = new BookDAO($conn, $BASE_URL);
 $admData = $admDAO->verifyTokenAdm(true);
 
 
-require_once("templates/headerAdm.php");
+require_once ("templates/headerAdm.php");
 
 
 ?>
@@ -24,7 +24,7 @@ require_once("templates/headerAdm.php");
 <div id="main-container" class="container-fluid">
     <div id="register-container">
         <h2>Criar Adm</h2>
-        <form action="<?= $BASE_URL ?>authPainel_process.php" method="post">
+        <form action="<?= $BASE_URL ?>authPainel_process" method="post">
             <input type="hidden" value="register" name="type">
             <div class="form-group">
                 <label for="user">User:</label>
@@ -48,6 +48,6 @@ require_once("templates/headerAdm.php");
     </div>
 </div>
 
-<?php 
-require_once('templates/footer.php')
-?>
+<?php
+require_once ('templates/footer.php')
+    ?>

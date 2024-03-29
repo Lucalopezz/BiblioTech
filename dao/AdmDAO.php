@@ -1,7 +1,7 @@
 <?php
 
-require_once("models/Adm.php");
-require_once("models/Message.php");
+require_once ("models/Adm.php");
+require_once ("models/Message.php");
 
 class AdmUserDAO implements AdmUserDAOInterface
 {
@@ -51,7 +51,7 @@ class AdmUserDAO implements AdmUserDAOInterface
     public function verifyTokenAdm($protected = false)
     {
 
-        if (!empty($_SESSION["token"])) {
+        if (!empty ($_SESSION["token"])) {
 
             // Pega o token da session
             $token = $_SESSION["token"];
@@ -90,7 +90,7 @@ class AdmUserDAO implements AdmUserDAOInterface
 
         if ($redirect) {
             //redireciona para o perfil
-            $this->message->setMessage("Seja bem-vindo!", "success", "controlPainel.php");
+            $this->message->setMessage("Seja bem-vindo!", "success", "controlPainel");
 
 
 
@@ -178,6 +178,6 @@ class AdmUserDAO implements AdmUserDAOInterface
 
 
         // Redirecionar e apresentar a mensagem de sucesso
-        $this->message->setMessage("Você fez o logout com sucesso!", "success", "painel.php");
+        $this->message->setMessage("Você fez o logout com sucesso!", "success", "painel");
     }
 }

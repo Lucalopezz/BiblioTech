@@ -1,9 +1,9 @@
 <?php
-require_once("templates/header.php");
+require_once ("templates/header.php");
 
-require_once("dao/BookDAO.php");
-require_once("dao/ReviewDAO.php");
-require_once("models/Book.php");
+require_once ("dao/BookDAO.php");
+require_once ("dao/ReviewDAO.php");
+require_once ("models/Book.php");
 
 //pegar o id do livro
 
@@ -15,20 +15,20 @@ $book;
 $bookDAO = new BookDAO($conn, $BASE_URL);
 $reviewDAO = new ReviewDAO($conn, $BASE_URL);
 
-if (empty($id)) {
-    $message->setMessage("Livro não encontrado!", "error", "index.php");
+if (empty ($id)) {
+    $message->setMessage("Livro não encontrado!", "error", "index");
 
 } else {
     $book = $bookDAO->findById($id);
 
     // verifica se o livro existe
     if (!$book) {
-        $message->setMessage("Livro não encontrado!", "error", "index.php");
+        $message->setMessage("Livro não encontrado!", "error", "index");
 
     }
 }
 
-if (!empty($userData)) {
+if (!empty ($userData)) {
     //resgatar as reviews do livro
     $alreadyReviewed = $reviewDAO->hasAlreadyReviewed($id, $userData->id);
 }
@@ -52,17 +52,26 @@ $bookReviews = $reviewDAO->getBooksReview($id);
                     <?= $book->category ?>
                 </span>
                 <span class="pipe"></span>
-                <span><i class="fas fa-star"></i>
-                    <?= $book->rating ?>
+                <span><i class="fa-solid fa-box"></i>
+                    <?= $book->quant ?>
                 </span>
                 <span class="pipe"></span>
-                <span><i class="fa-solid fa-box"></i>
-                     <?= $book->quant ?>
+                <span><i class="fa-solid fa-feather"></i>
+                    <?= $book->author ?>
                 </span>
+
             </p>
 
             <div class="book-image-container"
                 style="background-image: url(<?= $BASE_URL ?>img/books/<?= $book->image ?>);">
+            </div>
+
+            <div>
+                <span><i class="fas fa-star"></i>
+                    <?= $book->rating ?>
+                </span>
+                <br>
+                <br>
             </div>
             <p class="description">
                 <?= $book->description ?>
@@ -74,11 +83,11 @@ $bookReviews = $reviewDAO->getBooksReview($id);
         <div class="offset-md-1 col-md-10" id="reviews-container">
             <h3 id="reviews-title">Avaliações</h3>
             <!-- Verifica se habilita a review para o usuario logado -->
-            <?php if (!empty($userData) && !$alreadyReviewed): ?>
+            <?php if (!empty ($userData) && !$alreadyReviewed): ?>
                 <div class="col-md-12" id="form-container">
                     <h4>Envie sua avaliação:</h4>
                     <p class="page-description">Preencha o form com a nota e comentário sobre o livro</p>
-                    <form action="<?= $BASE_URL ?>review_process.php" method="post" id="review-form-container">
+                    <form action="<?= $BASE_URL ?>review_process" method="post" id="review-form-container">
                         <input type="hidden" name="type" value="create">
                         <input type="hidden" name="books_id" value="<?= $book->id ?>">
                         <div class="form-group">
@@ -109,10 +118,10 @@ $bookReviews = $reviewDAO->getBooksReview($id);
             <?php endif; ?>
 
             <?php foreach ($bookReviews as $review): ?>
-                <?php require("templates/user_review.php"); ?>
+                <?php require ("templates/user_review.php"); ?>
             <?php endforeach; ?>
             <?php if (count($bookReviews) == 0): ?>
-                <p class="empty-list">Não há críticas para este filme ainda...</p>
+                <p class="empty-list">Não há críticas para este livro ainda...</p>
             <?php endif; ?>
 
         </div>
@@ -121,4 +130,4 @@ $bookReviews = $reviewDAO->getBooksReview($id);
 
 
 <?php
-require_once("templates/footer.php");
+require_once ("templates/footer.php");

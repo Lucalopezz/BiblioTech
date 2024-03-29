@@ -1,16 +1,16 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 
-require_once("globals.php");
-require_once("db.php");
-require_once("models/Message.php");
-require_once("dao/UserDAO.php");
+require_once ("globals.php");
+require_once ("db.php");
+require_once ("models/Message.php");
+require_once ("dao/UserDAO.php");
 
 $message = new Message($BASE_URL);
 
 $flassMesage = $message->getMessage();
 
-if (!empty($flassMesage['msg'])) {
+if (!empty ($flassMesage['msg'])) {
     // limpar a msg
     $message->clearMessage();
 }
@@ -69,7 +69,8 @@ $userData = $userDao->verifyToken(false);
                     <?php if ($userData): ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $BASE_URL ?>dashboard.php"><i class="fa-solid fa-star"></i> Minhas Críticas</a>
+                            <a class="nav-link" href="<?= $BASE_URL ?>dashboard.php"><i class="fa-solid fa-star"></i> Minhas
+                                Críticas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link bold" href="<?= $BASE_URL ?>editprofile.php">
@@ -78,7 +79,8 @@ $userData = $userDao->verifyToken(false);
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $BASE_URL ?>logout.php"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+                            <a class="nav-link" href="<?= $BASE_URL ?>logout.php"><i
+                                    class="fa-solid fa-right-from-bracket"></i> Sair</a>
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
@@ -89,7 +91,7 @@ $userData = $userDao->verifyToken(false);
             </div>
         </nav>
     </header>
-    <?php if (!empty($flassMesage["msg"])): ?>
+    <?php if (!empty ($flassMesage["msg"])): ?>
         <div class="msg-container">
             <p class="msg success <?= $flassMesage["type"] ?>">
                 <?= $flassMesage["msg"] ?>

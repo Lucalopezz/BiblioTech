@@ -16,14 +16,14 @@ $id = filter_input(INPUT_GET, "id");
 $bookDAO = new BookDAO($conn, $BASE_URL);
 
 if (empty($id)) {
-    $message->setMessage("Livro não encontrado!", "error", "controlPainel.php");
+    $message->setMessage("Livro não encontrado!", "error", "controlPainel");
 
 } else {
     $book = $bookDAO->findById($id);
 
     // verifica se o livro existe
     if (!$book) {
-        $message->setMessage("Livro não encontrado!", "error", "controlPainel.php");
+        $message->setMessage("Livro não encontrado!", "error", "controlPainel");
 
     }
 }
@@ -49,6 +49,11 @@ $categories = $bookDAO->FindCategory();
                         <label for="title">Título:</label>
                         <input type="text" class="form-control" id="title" placeholder="Digite o Título do seu Livro"
                             name="title" value="<?= $book->title ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Autor:</label>
+                        <input type="text" class="form-control" id="author" placeholder="Digite o altor do seu Livro"
+                            name="author" value="<?= $book->author ?>">
                     </div>
 
                     <div class="form-group">

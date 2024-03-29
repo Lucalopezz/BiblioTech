@@ -5,6 +5,7 @@ class Book
 
     public $id;
     public $title;
+    public $author;
     public $description;
     public $image;
     public $quant;

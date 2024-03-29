@@ -1,14 +1,14 @@
 <?php
-require_once("globals.php");
-require_once("db.php");
-require_once("models/Message.php");
-require_once("dao/UserDAO.php");
+require_once ("globals.php");
+require_once ("db.php");
+require_once ("models/Message.php");
+require_once ("dao/UserDAO.php");
 
 $message = new Message($BASE_URL);
 
 $flassMesage = $message->getMessage();
 
-if (!empty($flassMesage['msg'])) {
+if (!empty ($flassMesage['msg'])) {
     // limpar a msg
     $message->clearMessage();
 }
@@ -24,6 +24,8 @@ $userData = $userDao->verifyToken(false);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Não indexar -->
+    <meta name="robots" content="noindex, nofollow">
     <title>BiblioTech</title>
     <link rel="shortcut icon" href="<?= $BASE_URL ?>img/bibliotechicon.png" type="image/x-icon">
     <!-- Bootstrap CSS -->
@@ -51,7 +53,7 @@ $userData = $userDao->verifyToken(false);
                 <i class="fas fa-bars"></i>
             </button>
 
-            <form action="<?= $BASE_URL ?>search.php" method="GET" id="search-form">
+            <form action="<?= $BASE_URL ?>search" method="GET" id="search-form">
                 <div class="input-group"> <!-- Adicionando um elemento de grupo para melhor alinhamento -->
                     <input type="text" name="q" id="search" class="form-control" placeholder="Buscar livro"
                         aria-label="Search">
@@ -68,27 +70,29 @@ $userData = $userDao->verifyToken(false);
                     <?php if ($userData): ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $BASE_URL ?>dashboard.php"><i class="fa-solid fa-star"></i> Minhas Críticas</a>
+                            <a class="nav-link" href="<?= $BASE_URL ?>dashboard"><i class="fa-solid fa-star"></i> Minhas
+                                Críticas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bold" href="<?= $BASE_URL ?>editprofile.php">
+                            <a class="nav-link bold" href="<?= $BASE_URL ?>editprofile">
                                 <i class="fa-solid fa-user"></i>
                                 <?= $userData->name ?>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $BASE_URL ?>logout.php"><i class="fa-solid fa-right-from-bracket"></i> Sair</a>
+                            <a class="nav-link" href="<?= $BASE_URL ?>logout"><i class="fa-solid fa-right-from-bracket"></i>
+                                Sair</a>
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $BASE_URL ?>authUser.php">Entrar / Cadastrar</a>
+                            <a class="nav-link" href="<?= $BASE_URL ?>authUser">Entrar / Cadastrar</a>
                         </li>
                     <?php endif; ?>
                 </ul>
             </div>
         </nav>
     </header>
-    <?php if (!empty($flassMesage["msg"])): ?>
+    <?php if (!empty ($flassMesage["msg"])): ?>
         <div class="msg-container">
             <p class="msg success <?= $flassMesage["type"] ?>">
                 <?= $flassMesage["msg"] ?>

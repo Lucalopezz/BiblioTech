@@ -1,7 +1,7 @@
 <?php
-require_once("templates/header.php");
+require_once ("templates/header.php");
 
-require_once("dao/BookDAO.php");
+require_once ("dao/BookDAO.php");
 
 
 $bookDAO = new BookDAO($conn, $BASE_URL);
@@ -24,16 +24,13 @@ $AllBooks = $bookDAO->getAllBooks();
 
         foreach ($last7Books as $book):
             ?>
-            <?php require('templates/book_card.php'); ?>
+            <?php require ('templates/book_card.php'); ?>
         <?php endforeach; ?>
 
         <?php if (count($lastesBooks) == 0): ?>
             <p class="empty-list">Não há livros cadastrados</p>
         <?php endif; ?>
     </div>
-
-
-
     <h2 class="section-title">Livros de Ficção Científica</h2>
     <p class="section-desciption">
         Veja os últimos livros de ficção científica adicionados
@@ -45,15 +42,13 @@ $AllBooks = $bookDAO->getAllBooks();
 
         foreach ($last7FicBooks as $book):
             ?>
-            <?php require('templates/book_card.php'); ?>
+            <?php require ('templates/book_card.php'); ?>
         <?php endforeach; ?>
 
         <?php if (count($last7FicBooks) == 0): ?>
             <p class="empty-list">Não há livros cadastrados</p>
         <?php endif; ?>
     </div>
-
-
     <h2 class="section-title">Livros de Romance</h2>
     <p class="section-desciption">
         Veja os últimos livros de romance adicionados
@@ -65,14 +60,13 @@ $AllBooks = $bookDAO->getAllBooks();
 
         foreach ($last7RomBooks as $book):
             ?>
-            <?php require('templates/book_card.php'); ?>
+            <?php require ('templates/book_card.php'); ?>
         <?php endforeach; ?>
 
         <?php if (count($last7RomBooks) == 0): ?>
             <p class="empty-list">Não há livros cadastrados</p>
         <?php endif; ?>
     </div>
-
     <h2 class="section-title">Todos</h2>
     <p class="section-desciption">
         Veja todo o nosso estôque
@@ -84,22 +78,18 @@ $AllBooks = $bookDAO->getAllBooks();
 
         foreach ($last7AllBooks as $book):
             ?>
-            <?php require('templates/book_card.php'); ?>
+            <?php require ('templates/book_card.php'); ?>
         <?php endforeach; ?>
 
         <?php if (count($AllBooks) == 0): ?>
             <p class="empty-list">Não há livros cadastrados</p>
         <?php endif; ?>
         <?php if (count($AllBooks) >= 10): ?>
-            <a class="read-more btn card-btn" href="<?= $BASE_URL ?>allBooks.php">Ver Mais</a>
+            <a class="read-more btn card-btn" href="<?= $BASE_URL ?>allBooks">Ver Mais</a>
         <?php endif; ?>
     </div>
-
-
-
-
 </div>
 
 <?php
-require_once("templates/footer.php");
+require_once ("templates/footer.php");
 ?>

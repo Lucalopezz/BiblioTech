@@ -320,7 +320,7 @@ html {
 .read-more {
   color: var(--background-color);
   text-decoration: none;
-  margin-left: 95%;
+  margin-left: 90%;
   transition: 0.5s;
 }
 

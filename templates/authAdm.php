@@ -4,7 +4,7 @@
             <div class="row" id="auth-row">
                 <div class="col-md-4" id="login-container">
                     <h2>Entrar</h2>
-                    <form action="<?= $BASE_URL ?>authPainel_process.php" method="post">
+                    <form action="<?= $BASE_URL ?>authPainel_process" method="post">
                         <input type="hidden" value="login" name="type">
                         <div class="form-group">
                             <label for="user">User:</label>

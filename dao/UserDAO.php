@@ -1,7 +1,7 @@
 <?php
 
-require_once("models/Users.php");
-require_once("models/Message.php");
+require_once ("models/Users.php");
+require_once ("models/Message.php");
 
 class UserDAO implements UserDAOInterface
 {
@@ -56,7 +56,8 @@ class UserDAO implements UserDAOInterface
 
         }
     }
-    public function askGender($gen){
+    public function askGender($gen)
+    {
 
     }
 
@@ -75,14 +76,14 @@ class UserDAO implements UserDAOInterface
         $stmt->execute();
 
         if ($redirect) {
-            $this->message->setMessage("Dados Atualizados com Sucesso!", "success", "editprofile.php");
+            $this->message->setMessage("Dados Atualizados com Sucesso!", "success", "editprofile");
 
         }
 
     }
     public function verifyToken($protected = false)
     {
-        if (!empty($_SESSION["token"])) {
+        if (!empty ($_SESSION["token"])) {
 
             $token = $_SESSION["token"];
 
@@ -91,12 +92,12 @@ class UserDAO implements UserDAOInterface
             if ($user) {
                 return $user;
             } else if ($protected) {
-                $this->message->setMessage("Faça a autenticação para acessar esta página!", "error", "index.php");
+                $this->message->setMessage("Faça a autenticação para acessar esta página!", "error", "index");
 
             }
 
         } else if ($protected) {
-            $this->message->setMessage("Faça a autenticação para acessar esta página!", "error", "index.php");
+            $this->message->setMessage("Faça a autenticação para acessar esta página!", "error", "index");
         }
 
     }
@@ -106,7 +107,7 @@ class UserDAO implements UserDAOInterface
         $_SESSION['token'] = $token;
 
         if ($redirect) {
-            $this->message->setMessage("Seja bem-vindo!", "success", "editprofile.php");
+            $this->message->setMessage("Seja bem-vindo!", "success", "editprofile");
         }
 
     }
@@ -211,13 +212,13 @@ class UserDAO implements UserDAOInterface
         $stmt->bindParam(":id", $user->id);
 
         $stmt->execute();
-        $this->message->setMessage("Senhas alteradas com sucesso!", "success", "editprofile.php");
+        $this->message->setMessage("Senhas alteradas com sucesso!", "success", "editprofile");
 
     }
     public function destroyToken()
     {
         $_SESSION["token"] = "";
-        $this->message->setMessage("Você fez o logout com sucesso!", "success", "index.php");
+        $this->message->setMessage("Você fez o logout com sucesso!", "success", "index");
 
     }
 

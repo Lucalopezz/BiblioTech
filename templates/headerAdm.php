@@ -1,7 +1,7 @@
 <?php
-require_once("globals.php");
-require_once("db.php");
-require_once("dao/AdmDAO.php");
+require_once ("globals.php");
+require_once ("db.php");
+require_once ("dao/AdmDAO.php");
 
 $admDao = new AdmUserDAO($conn, $BASE_URL);
 
@@ -10,7 +10,7 @@ $message = new Message($BASE_URL);
 
 $flassMesage = $message->getMessage();
 
-if (!empty($flassMesage['msg'])) {
+if (!empty ($flassMesage['msg'])) {
     // limpar a msg
     $message->clearMessage();
 }
@@ -22,6 +22,8 @@ if (!empty($flassMesage['msg'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Não indexar -->
+    <meta name="robots" content="noindex, nofollow">
     <title>BiblioTech</title>
     <link rel="shortcut icon" href="<?= $BASE_URL ?>img/blibliotech.png" type="image/x-icon">
     <!-- Bootstrap CSS -->
@@ -53,13 +55,20 @@ if (!empty($flassMesage['msg'])) {
                 <ul class="navbar-nav">
                     <?php if ($admData): ?>
                         <li class="nav-item">
-                            <a class="nav-link bold" href="<?= $BASE_URL ?>addAdmUser.php">
+                            <a class="nav-link bold" href="<?= $BASE_URL ?>controlPainel">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link bold" href="<?= $BASE_URL ?>addAdmUser">
                                 <i class="fa-solid fa-user"></i>
                                 <?= $admData->user ?>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $BASE_URL ?>logoutADM.php">Sair</a>
+                            <a class="nav-link" href="<?= $BASE_URL ?>logoutADM">Sair</a>
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
@@ -70,7 +79,7 @@ if (!empty($flassMesage['msg'])) {
             </div>
         </nav>
     </header>
-    <?php if (!empty($flassMesage["msg"])): ?>
+    <?php if (!empty ($flassMesage["msg"])): ?>
         <div class="msg-container">
             <p class="msg success <?= $flassMesage["type"] ?>">
                 <?= $flassMesage["msg"] ?>

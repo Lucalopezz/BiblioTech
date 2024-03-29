@@ -1,8 +1,8 @@
 <?php
-require_once("templates/header.php");
-require_once("dao/BookDAO.php");
+require_once ("templates/header.php");
+require_once ("dao/BookDAO.php");
 
-require("helpers/xssFunc.php");
+require ("helpers/xssFunc.php");
 
 //dao dos livros
 $bookDAO = new BookDAO($conn, $BASE_URL);
@@ -22,7 +22,7 @@ $books = $bookDAO->findByTitle($q);
     <div class="books-container">
 
         <?php foreach ($books as $book): ?>
-            <?php require('templates/book_card.php'); ?>
+            <?php require ('templates/book_card.php'); ?>
         <?php endforeach; ?>
         <?php if (count($books) == 0): ?>
             <p class="empty-list">Não há filmes com esse nome, <a class="back-link " href="<?= $BASE_URL ?>">Voltar</a></p>
@@ -34,5 +34,5 @@ $books = $bookDAO->findByTitle($q);
 
 
 <?php
-require_once("templates/footer.php");
+require_once ("templates/footer.php");
 ?>

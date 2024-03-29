@@ -7,7 +7,7 @@ class Message
     {
         $this->url = $url;
     }
-    public function setMessage($msg, $type, $redirect = "index.php")
+    public function setMessage($msg, $type, $redirect = "index")
     {
         $_SESSION['msg'] = $msg;
         $_SESSION['type'] = $type;
@@ -15,7 +15,7 @@ class Message
         if ($redirect != "back") {
             header("Location: $this->url" . $redirect);
         } else {
-            $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "index.php";
+            $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : "index";
             header("Location: $referer");
         }
 
